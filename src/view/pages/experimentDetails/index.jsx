@@ -39,7 +39,7 @@ const ExperimentDetailsPage = () => {
 
   // STATE VARIABLE
   const [isLoading, setLoading] = useState(false);
-  const [state, setState] = useState(ExperimentList[0]);
+  const [state, setState] = useState({});
 
   const getExperimentDetailById = async () => {
     setLoading(true);
@@ -100,7 +100,7 @@ const ExperimentDetailsPage = () => {
   };
 
   useEffect(() => {
-    // getExperimentDetailById();
+    getExperimentDetailById();
   }, []);
   return (
     <Container>

@@ -34,7 +34,7 @@ const ExperimentListPage = () => {
   const setNotification = useNotification();
 
   // STATE VARIABLE
-  const [state, setState] = useState(sortList(ExperimentList));
+  const [state, setState] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const widths = [2, 2, 2, 2, 2, 2]
 
@@ -55,7 +55,7 @@ const ExperimentListPage = () => {
   };
 
   useEffect(() => {
-    // getExperimentList();
+    getExperimentList();
   }, []);
 
   return (
