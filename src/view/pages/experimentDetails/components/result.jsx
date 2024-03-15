@@ -13,7 +13,6 @@ import {Lightbox} from "react-modal-image";
 
 // COMMON COMPONENT
 import {CardImage} from '../../../molecules';
-import {getImageSizeInKB} from '../../../../utils/file';
 
 // STYLE IMPORT
 import useStyles from '../styles';
@@ -50,7 +49,6 @@ const Result = (props) => {
                     <CardImage file={
                     {
                         imageSrc: `data:image/webp;base64, ${item.imageResult}`,
-                        size: `${getImageSizeInKB(item.imageResult).toFixed(2)} KB`,
                         handleImageModal: handleImageModal,
                         imageRef: imageRef,
                     }

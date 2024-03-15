@@ -49,13 +49,6 @@ export const getDate = (value, format = 'MMM Do YYYY HH:mm:ss') => {
   }
 }
 
-// Function to get the size of an image in KB from its Base64 content
-export const getImageSizeInKB = (base64String) => {
-  const binaryString = window.atob(base64String);
-  const sizeInKB = binaryString.length / 1024;
-  return sizeInKB;
-};
-
 export const shipStatus = {
   [SUBMIT_STATUE.COMPLETED]: <Chip color="success" label='Completed' size="small"/>,
   [SUBMIT_STATUE.SUCCESS]: <Chip color="success" label='Completed' size="small"/>,
