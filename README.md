@@ -6,65 +6,51 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+## API URL
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+`src/api/constants.js` -> Can update the API URL.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+`EXPERIMENT_SUBMIT_API` -> API Constant used for Add Experiment.
 
-### `npm test`
+`EXPERIMENT_LIST_API` -> API Constant used to fetch all Experiments.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`UPDATE_EXPERIMENT_API` -> API Constant used for Update Experiment Submission (Only used for comments).
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`Add Experiment`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. You can view the API call in the file at `src/view/pages/experimentSubmitter/index.jsx`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+`Add Experiment`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. You can view the API call in the file at `src/view/pages/experimentList/index.jsx`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`Add Experiment`
 
-## Learn More
+1. You can view the API call in the file at `src/view/pages/experimentDetails/components/comments.jsx`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Mock file
 
-### Code Splitting
+`trait-definitioins.json` -> src/sampleFile/trait-definitioins.json
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+`createPrompt.js` -> src/sampleFile/createPrompt.js
 
-### Analyzing the Bundle Size
+`config.json` -> src/sampleFile/config.json
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Sets to deploy in Github
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Do below steps after cloning and installing all npm module by `npm install --force`
 
-### Advanced Configuration
+1. `npm install gh-pages --force`
+2. Add the following property in the package.json -> `"homepage": "https://faizal-aelf.github.io/image-generator"`
+3. Add the following property inside scripts object in the package.json file -> `"predeploy": "npm run build"`
+4. Add the following property inside scripts object in the package.json file -> `"deploy": "gh-pages -d build"`
+5. `npm run deploy`
+6. Wait for 1 or 2 minutes and Check the last deployment time from here -> https://github.com/Faizal-aelf/cat-experiment/settings/pages and if its happened recent then click "Visit site" button.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# http://35.222.235.21/#/experimentSubmitter
