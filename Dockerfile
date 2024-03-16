@@ -9,5 +9,6 @@ RUN npm run build
 # Stage 2: Copy built files to Nginx container
 FROM nginx:latest
 COPY --from=build /usr/src/app/build /usr/share/nginx/html
+COPY default /etc/nginx/sites-enabled/default
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
