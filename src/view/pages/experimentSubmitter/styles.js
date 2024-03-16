@@ -24,6 +24,17 @@ const useStyles = makeStyles(() => ({
         display: 'flex',
         justifyContent: 'flex-end',
         gap: '12px'
+    },
+    chipItem: {
+        margin: '4px !important'
+    },
+    groupCheckbox: {
+        display: 'inline-flex',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        gap: '2px',
+        fontSize: '13px',
+        fontWeight: 600
     }
 
 }));

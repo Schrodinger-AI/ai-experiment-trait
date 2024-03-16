@@ -8,19 +8,18 @@
 // GENERIC IMPORT
 import { useState, useRef } from 'react';
 import {Box, TextField, Button, Tooltip} from '@mui/material';
-import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
 
 // COMMON COMPONENT
 import {Container} from '../../atom';
 import PageHeader from '../common/header/pageHeader';
-import {EXPERIMENT_SUBMIT_API} from '../../../api/constants';
-import * as PATH from '../../routes/constants';
 import {generateRandomString, getTodayDateTime} from '../../../utils/file';
 import {SUBMIT_STATUE} from '../../../utils/constants';
 
-// UTILS IMPORT
-import useNotification from '../../../utils/notification';
+// INTERNAL COMPONENT
+import SelectiveTraits from './components/selectiveTraits';
+
+// HOOK
+import {useHook} from './useHook';
 
 // STYLE IMPORT
 import useStyles from './styles';
@@ -29,12 +28,6 @@ const ExperimentSubmitterPage = () => {
   // DECLARE STYLE
   const classes = useStyles();
 
-  // NAVBAR
-  const navigate = useNavigate();
-
-  // DECLARE NOTIFICATION AND NAVIDATE
-  const setNotification = useNotification();
-
   // REF VARIABLE
   const traitFileRef = useRef(null);
   const createPromptFileRef = useRef(null);
@@ -42,6 +35,7 @@ const ExperimentSubmitterPage = () => {
 
   // STATE VARIABLE
   const [isLoading, setLoading] = useState(false);
+  const [selectedTraits, setSelectedTraits] = useState([]);
   const [state, setState] = useState({
     experimentId: generateRandomString(),
     submitterName: '',
@@ -55,121 +49,14 @@ const ExperimentSubmitterPage = () => {
     comments: []
   });
 
-  const handleChange = (event, name) => {
-    const { value, type, files } = event.target;
-    if (type === 'file') {
-        const file = files[0];
-        const reader = new FileReader();
-        const fileExtension = file.name.split('.').pop().toLowerCase();
-        if ((fileExtension === 'json' && ['configFile', 'traitsFile'].includes(name)) || (fileExtension === 'js' && ['createPromptFile'].includes(name))) {
-          reader.onload = (e) => {
-            if (fileExtension == 'json') {
-            const jsonData = JSON.parse(e.target.result);
-            const jsonString = JSON.stringify(jsonData);
-              setState(prevState => ({
-                  ...prevState,
-                  [name]: jsonString,
-              }));
-            } else {
-              let finalContent = e.target.result;
-              console.log(finalContent);
-              setTimeout(() => setState(prevState => ({
-                ...prevState,
-                [name]: finalContent,
-              })), 0);
-            }
-          };
-        reader.readAsText(file);
-      } else {
-         if (['configFile', 'traitsFile'].includes(name)) {
-          setNotification.error('Please upload only JSON file');
-        } else {
-          setNotification.error('Please upload only Javascript file');
-        }
-        setState(prevState => ({
-          ...prevState,
-          [name]: null,
-        }));
-        event.target.value = null;
-      }
-    } else {
-        setState(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    }
-  };
-
-  
-  const isAllFieldValid = () => {
-    if (!state.submitterName.trim().length) {
-      setNotification.error("Please provide the name of the submitter.");
-    } else if (!state.traitsFile) {
-      setNotification.error("Please upload the trait definitions file in JSON format.");
-    } else if (!state.createPromptFile) {
-      setNotification.error("Please upload the 'createPrompt' file in JavaScript (.js) format.");
-    } else if (!state.configFile) {
-      setNotification.error("Please upload the configuration file in JSON format.");
-    } else if (state.noOfSamples == 0) {
-      setNotification.error("Please provide the number of samples.");
-    } else {
-      return true;
-    }
-    return false;
-  };
-
-  const submitForm = async () => {
-    if (!isAllFieldValid()) {
-      return;
-    }
-    setLoading(true);
-      try {
-          const params = {
-            ...state,
-            noOfSamples: parseInt(state.noOfSamples),
-            submittedDate: getTodayDateTime()
-          }
-          console.log("params: ", params);
-          const response = await axios.post(
-              EXPERIMENT_SUBMIT_API,
-                  {
-                      ...params,
-                  },
-                  {
-                  headers: {
-                      'Content-Type': 'application/json',
-                  },
-              }
-          );
-          console.log(response.data);
-          setNotification.success('Submission successful.');
-          resetForm();
-          navigate(PATH.EXPERIMENT_LIST_PATH);
-      } catch (error) {
-          console.log('error: ', error);
-          setNotification.error("Something went wrong. Please try again later.");
-      } finally {
-          setLoading(false);
-      }
-  };
-
-  const resetForm = () => {
-    setState({
-      ...state,
-      experimentId: generateRandomString(),
-      submitterName: '',
-      noOfSamples: 5,
-      experimentDetails: '',
-      traitsFile: null,
-      createPromptFile: null,
-      configFile: null,
-      submittedDate: getTodayDateTime(),
-      status: SUBMIT_STATUE.SUBMITTED
-    });
-    traitFileRef.current.value = null;
-    createPromptFileRef.current.value = null;
-    configFileRef.current.value = null;
-  }
+  // HOOK VARIABLE
+  const {submitForm, resetForm, handleChange} = useHook(
+    state, 
+    setState, 
+    {traitFileRef, createPromptFileRef, configFileRef},
+    setLoading,
+    selectedTraits
+  );
 
   return (
     <Container>
@@ -245,7 +132,8 @@ const ExperimentSubmitterPage = () => {
             onChange={(event) => handleChange(event, 'experimentDetails')} inputProps={{maxLength: 400}}/>
         </Box>
       </Box>
-      <Box className={classes.btnContainer} textAlign='right'>
+      <SelectiveTraits traitsList={state.traitsFile} {...{selectedTraits, setSelectedTraits}}/>
+      <Box className={classes.btnContainer} textAlign='right' mt={2}>
           <Button variant="outlined" onClick={resetForm}>Clear</Button>
           <Button variant="contained" onClick={submitForm}>Submit Experiment</Button>
       </Box>
