@@ -5,6 +5,8 @@ name: Build and Push to GCP
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
   build:
