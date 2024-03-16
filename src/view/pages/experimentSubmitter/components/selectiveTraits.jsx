@@ -51,7 +51,7 @@ const SelectiveTraits = (props) => {
             </Box>
             <Alert color="warning">To enable selective traits, begin by uploading the 'traits definition file'. Then, select 'Selective traits' checkbox, and choose the desired traits type from the options below. Only the selected traits type will be included in generating the image.</Alert>
             {isCheckTicked && 
-                <Box>{traitsTypeList.map((traitType, index) => (
+                <Box mt={1}>{traitsTypeList.map((traitType, index) => (
                     <Chip color="primary" onClick={() => addTraits(traitType)} label={traitType} 
                         variant={isAlreadyAdded(traitType) ? 'filled' : "outlined"} className={classes.chipItem} key={`${traitType}-${index}`} 
                         {...(isAlreadyAdded(traitType) && { onDelete: () => removeTraits(traitType)})} />
