@@ -21,8 +21,8 @@ import * as PATH from '../../routes/constants';
 import TraitsModal from './components/traitsModal';
 
 // FILE
-import ConfigFileData from '../../../mockdata/config.json';
-import CreatePromptData from '../../../mockdata/promptCreate.json';
+import ConfigFileData from '../../../mockData/config.json';
+import CreatePromptData from '../../../mockData/promptCreate.json';
 
 // UTILS IMPORT
 import useNotification from '../../../utils/notification';
