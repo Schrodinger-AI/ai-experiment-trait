@@ -16,6 +16,6 @@ export const NotificationType = {
 export const LOGIN_TOKEN = '112233'; // VG3pcY2dI8RtpAFVkkPeOXMhh1rv5prEGkRrchEmlXoRghcvkwEZ3K87mwr6qR34
 
 export const IDLE_TIMER = {
-    timeout: 600000, // 600000 = 10 minutes
+    timeout: 1800000, // 600000 = 30 minutes
     promptBeforeIdle: 240000, // 240000 = 4 minutes
 };
