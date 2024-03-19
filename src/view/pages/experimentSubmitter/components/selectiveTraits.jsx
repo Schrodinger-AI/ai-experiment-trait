@@ -46,7 +46,7 @@ const SelectiveTraits = (props) => {
     return (
         <Box>
             <Box className={classes.groupCheckbox}>
-                <FormControlLabel control={<Checkbox disabled={!props?.traitsList} onChange={handleCheckbox} checked={isCheckTicked}/>} label="Selective traits" />
+                <FormControlLabel control={<Checkbox disabled={!props?.traitsList} onChange={handleCheckbox} checked={isCheckTicked}/>} label="Selective traits (Optional)" />
                 {isCheckTicked && <Box>Total selected traits: {props.selectedTraits.length}</Box>}
             </Box>
             <Alert color="warning">To enable selective traits, begin by uploading the 'traits definition file'. Then, select 'Selective traits' checkbox, and choose the desired traits type from the options below. Only the selected traits type will be included in generating the image.</Alert>
