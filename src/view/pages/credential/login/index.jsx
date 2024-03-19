@@ -91,6 +91,10 @@ const LoginPage = () => {
     }
   };
 
+  const contactAdmin = () => {
+    setNotification.success("Please contact Steve.");
+  }
+
   return (
     <>
       { isLoading && <Loader/>} 
@@ -99,16 +103,16 @@ const LoginPage = () => {
         <Box className={classes.loginContainer}>
           <Box className={classes.loginContent}>
             <Box className={classes.title}>
-            <img src={LogoIcon}  alt="Logo" height={30}/>&nbsp;Traits Experiment</Box>
+            <img src={LogoIcon} alt="Logo" height={30}/>&nbsp;Traits Experiment</Box>
             <Box className={classes.subtitle}>We make digital product that drive you to stand out.</Box>
             <Box className={classes.info}>We write code to create NFT by interacting with artificial intelligence using different traits.</Box>
           </Box>
           <Box className={classes.loginBox}>
             <Box>
               <Box className={classes.loginTitle}>Login</Box>
-              <Box className={classes.loginSubTitle}>Don't have an account? Please account admin</Box>
+              <Box className={classes.loginSubTitle}>Don't have an account? Please contact our <Box className={classes.link} onClick={contactAdmin}>admin team</Box></Box>
             </Box>
-            <TextField type='password' label="Token" variant="outlined" 
+            <TextField type='password' label="Password" variant="outlined" 
             fullWidth placeholder='Please enter the token' value={token} size='small'
             onChange={(event) => setToken(event.target.value)} onKeyDown={handleKeyDown}/>
             <Button variant="contained" fullWidth onClick={onLogin}>Login</Button>

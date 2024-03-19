@@ -65,7 +65,16 @@ const useStyles = makeStyles(() => ({
         fontSize: '13px',
         fontWeight: 400,
         lineHeight: '21px'
-    }
+    },
+    link: {
+        cursor: 'pointer',
+        color: '#256dd3',
+        display: 'inline-block',
+        '&:hover': {
+            cursor: 'pointer',
+            textDecoration: 'underline',
+        }
+    },
 }));
   
 export default useStyles;
