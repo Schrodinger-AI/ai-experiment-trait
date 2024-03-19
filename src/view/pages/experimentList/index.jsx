@@ -63,7 +63,7 @@ const ExperimentListPage = () => {
       <PageHeader title='Experiment List' subtitle="Here's what you're looking at"  {...{isLoading}}></PageHeader>
       <ExperimentTiles widths={widths}/>
       {state?.length > 0 ? state.map((item, index) => (
-        <ExperimentItem key={index} widths={widths} data={item}/>
+        <ExperimentItem key={`experiment-list-${index}`} widths={widths} data={item}/>
       )) : <Empty 
       title='No experiment created yet' 
       subtitle='Please create new experiment from Experiment Submitter page.' 

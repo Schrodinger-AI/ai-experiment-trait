@@ -98,13 +98,15 @@ export function useHook(state, setState, fileRef, setLoading, selectedTraits) {
                   }
               );
               console.log(response.data);
-              setNotification.success('Submission successful.');
               resetForm();
-              navigate(PATH.EXPERIMENT_LIST_PATH);
+              setTimeout(() => {
+                setNotification.success('Submission successful.');
+                setLoading(false)
+                navigate(PATH.EXPERIMENT_LIST_PATH)
+              }, 4000);
           } catch (error) {
               console.log('error: ', error);
               setNotification.error("Something went wrong. Please try again later.");
-          } finally {
               setLoading(false);
           }
     };
