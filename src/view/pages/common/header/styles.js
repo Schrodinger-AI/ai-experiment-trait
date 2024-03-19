@@ -2,9 +2,15 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles(() => ({
   header: {
-    // background: '#2980b9',
-    // padding: '8px 24px',
-    // color: '#fff',
+    display: 'flex',
+    justifyContent: 'start',
+    alignItems: 'center',
+    padding: '16px 25px 17px 20px',
+    background: '#145cc2',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0
   },
   pageHeaderContainer: {
     borderBottom: '1px solid #ccc',

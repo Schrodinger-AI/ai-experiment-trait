@@ -39,8 +39,7 @@ export function useHook(state, setState, fileRef, setLoading, selectedTraits) {
           return true;
         }
         return false;
-      };
-
+    };
 
     const resetForm = () => {
         setState({

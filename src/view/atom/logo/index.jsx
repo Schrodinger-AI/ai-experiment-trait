@@ -19,7 +19,7 @@ const Logo = () => {
   return (
     <Box className={classes.logoContainer}> 
       <img src={LogoIcon}  alt="Logo" height={25}/>
-      <Box className={classes.logoName}>NFT Generator</Box>
+      <Box className={classes.logoName}>Traits Experiment</Box>
     </Box>
   )
 }

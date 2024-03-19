@@ -38,6 +38,15 @@ export const utilsMenuItems = [
     },
 ];
 
+export const settingsMenuItems = [
+    {
+        id: 'LOGOUT',
+        label: 'Logout',
+        icon: <i className="fa fa-power-off"></i>,
+        link: PATH.LOGOUT_PATH,
+    },
+];
+
 export const helpMenuItems = [
     {
         id: 'HELP',

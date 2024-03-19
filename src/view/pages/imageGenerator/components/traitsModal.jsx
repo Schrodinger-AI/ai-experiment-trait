@@ -7,8 +7,7 @@
  */
 // GENERIC IMPORT
 import { useState } from 'react';
-import {Box, Accordion, AccordionSummary, AccordionDetails, Chip, Modal, Button, Select, MenuItem, FormControl, InputLabel} from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {Box, Chip, Modal, Button, Select, MenuItem, FormControl, InputLabel} from '@mui/material';
 
 // JSON DATA
 import TraitsDataList from '../data/traits.json';

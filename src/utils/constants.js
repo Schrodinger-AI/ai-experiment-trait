@@ -11,3 +11,6 @@ export const NotificationType = {
     success: 'success',
     error: 'error',
 }
+
+// TOKEN
+export const LOGIN_TOKEN = 'VG3pcY2dI8RtpAFVkkPeOXMhh1rv5prEGkRrchEmlXoRghcvkwEZ3K87mwr6qR34';

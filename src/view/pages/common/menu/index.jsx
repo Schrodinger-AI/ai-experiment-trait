@@ -13,7 +13,11 @@ import {useNavigate} from 'react-router-dom';
 
 // GENERIC COMPONENT
 import { Logo, Loader } from '../../../atom';
-import { mainMenuItems, utilsMenuItems, helpMenuItems } from './constants';
+import { mainMenuItems, utilsMenuItems, helpMenuItems, settingsMenuItems } from './constants';
+import Logout from '../../credential/logout';
+
+// ROUTER IMPORT
+import * as PATH from '../../../routes/constants';
 
 // CONTEXT
 import { menuContext, MENU_ACTION_TYPE } from '../../../../contexts/useMenuContext';
@@ -27,6 +31,7 @@ const Menu = () => {
 
     // LOCAL STATE
     const [isLoading, setLoading] = useState(false);
+    const [isOpen, setOpen] = useState(false);
 
     // NAVBAR
     const navigate = useNavigate();
@@ -37,11 +42,15 @@ const Menu = () => {
 
     // ON MENU ITEM CLICKED
     const onMenuPress = (link) => {
-        setLoading(true);
-        navigate(link);
-        context?.dispatch({ type: MENU_ACTION_TYPE.UPDATE, payload: link });
-        setTimeout(() => setLoading(false), 500);
-        localStorage.setItem("selectedMenu", link);
+        if (link === PATH.LOGOUT_PATH) {
+            setOpen(true);
+        } else {
+            setLoading(true);
+            navigate(link);
+            context?.dispatch({ type: MENU_ACTION_TYPE.UPDATE, payload: link });
+            setTimeout(() => setLoading(false), 500);
+            localStorage.setItem("selectedMenu", link);
+        }
     };
 
     return (
@@ -61,6 +70,12 @@ const Menu = () => {
                             <li key={item.id} onClick={() => onMenuPress(item.link)} className={clsx(classes.menuItem,  item.link === selectedMenu && classes.menuActive)}>{item.icon}&nbsp;&nbsp;{item.label}</li>
                         ))}
                     </ul>
+                    <Box className={classes.menuHeader}>Setting</Box>
+                    <ul className={clsx(classes.menuList)}>
+                        {settingsMenuItems.map((item) => (
+                            <li key={item.id} onClick={() => onMenuPress(item.link)} className={clsx(classes.menuItem,  item.link === selectedMenu && classes.menuActive)}>{item.icon}&nbsp;&nbsp;{item.label}</li>
+                        ))}
+                    </ul>
                 </Box>
             </Box>
             <Box className={classes.sideMenuBottomLayer}>
@@ -70,6 +85,7 @@ const Menu = () => {
                     ))}
                 </ul>
             </Box>
+            {isOpen && <Logout onClose={() => setOpen(false)}/>}
         </Box>
     )
 }

@@ -13,7 +13,6 @@ import {Box} from '@mui/material';
 import * as PATH from './constants';
 
 // COMMON PAGE IMPORT 
-import Header from '../pages/common/header';
 import Menu from '../pages/common/menu';
 import Footer from '../pages/common/footer';
 import NoPage from '../pages/error/noPage';
@@ -40,7 +39,6 @@ const AppRoutes = () => {
                 <Menu/>
                 <Box className={classes.bodyContent}>
                     <Box className={classes.routerContainer}>
-                        <Header/>
                         <Routes>
                             <Route path={PATH.HOME_PATH} element={<DashboardPage />}/>
                             <Route path={PATH.EXPERIMENT_SUBMITTER_PATH} element={<ExperimentSubmitterPage />}/>

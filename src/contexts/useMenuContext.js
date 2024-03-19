@@ -8,7 +8,6 @@
 // GENERIC IMPORT
 import { createContext } from 'react';
 
-
 // ROUTER IMPORT
 import * as PATH from '../view/routes/constants';
 

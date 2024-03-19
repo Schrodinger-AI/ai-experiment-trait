@@ -9,7 +9,7 @@
 import { Route, Routes, HashRouter } from 'react-router-dom';
 
 // PAGE 
-import LoginPage from '../pages/login';
+import LoginPage from '../pages/credential/login';
 
 // ROUTER IMPORT
 import AppRoutes from './appRoutes';
