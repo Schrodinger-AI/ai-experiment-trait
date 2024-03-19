@@ -25,7 +25,6 @@ import ExperimentDetailsPage from '../pages/experimentDetails';
 import ImageGeneratorPage from '../pages/imageGenerator';
 import HelpPage from '../pages/help';
 import Auth from '../pages/credential/auth';
-import IdleTimer from '../pages/credential/idleTimer';
 
 // STYLE IMPORT
 import useStyles from './styles';
@@ -55,7 +54,6 @@ const AppRoutes = () => {
                 </Box>
             </Box>
             <Auth/>
-            <IdleTimer/>
         </Box>
     );
 };
