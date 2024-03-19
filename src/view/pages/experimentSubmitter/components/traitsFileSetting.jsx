@@ -26,6 +26,10 @@ const ConfigFileSetting = (props) => {
     // DECLARE NOTIFICATION
     const setNotification = useNotification();
 
+    // STATE VARIABLE
+    const {state, setState} = props;
+    const formTraitFile = state?.traitsFile ? JSON.parse(state?.traitsFile) : {};
+
     const formatTraitsObject = () => {
         const formattedTraitObject = props?.traitsFileObject  ? JSON.parse(props?.traitsFileObject) : {};
         for (const [key, value] of Object.entries(formattedTraitObject)) {
@@ -38,12 +42,11 @@ const ConfigFileSetting = (props) => {
     }
 
     // STATE VARIABLE
-    const {state, setState} = props;
-    const formTraitFile = state?.traitsFile ? JSON.parse(state?.traitsFile) : {};
     const [selectedTraitType, setSelectedTraitType] = useState();
     const [isLoading, setLoading] = useState(false);
-    const traitTypeList = props?.traitsFileObject ? Object.keys(JSON.parse(props?.traitsFileObject)) : [];
     const [traitObject, setTraitObject] = useState(formatTraitsObject());
+    const [selectAll, setSelectAll] = useState(false);
+    const traitTypeList = props?.traitsFileObject ? Object.keys(JSON.parse(props?.traitsFileObject)).sort() : [];
     const isUpdatable = !!props?.traitsFileObject;
 
     const getAlertMessage = () => {
@@ -77,6 +80,14 @@ const ConfigFileSetting = (props) => {
         props.onClose();
     }
 
+    const onSelectAll = (isChecked) => {
+        const formattedData = traitObject[selectedTraitType].map(item => {
+            return {isChecked, value: item.value}
+        });
+        setTraitObject({...traitObject, [selectedTraitType]: formattedData});
+        setSelectAll(isChecked)
+    }
+
     return (
         <FormModal
             title='Update traits definition file'
@@ -102,7 +113,13 @@ const ConfigFileSetting = (props) => {
                             ))}
                         </Select>
                     </FormControl>
+                    {selectedTraitType && <Box ml={1} mt={2}>
+                        <FormGroup>
+                            <FormControlLabel control={<Checkbox checked={selectAll} onChange={(event) => onSelectAll(event.target.checked)} />} label='Select all' />
+                        </FormGroup>
+                    </Box>}
                     <Box className={classes.contentScroll}>
+                    
                     {selectedTraitType && traitObject?.[selectedTraitType].map((item, index) => (
                         <Box>
                             <FormGroup key={`${item.value}-${selectedTraitType}-${index}`}>

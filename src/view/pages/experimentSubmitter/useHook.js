@@ -126,14 +126,14 @@ export function useHook(state, setState, fileRef, setLoading, selectedTraits, se
                       ...prevState,
                       [name]: jsonString,
                   }));
+                  setDefaultFile(prevState => ({
+                    ...prevState,
+                    [name]: jsonString,
+                  }));
                 } else {
                   let finalContent = e.target.result;
                   setTimeout(() => {
                     setState(prevState => ({
-                      ...prevState,
-                      [name]: finalContent,
-                    }));
-                    setDefaultFile(prevState => ({
                       ...prevState,
                       [name]: finalContent,
                     }));
