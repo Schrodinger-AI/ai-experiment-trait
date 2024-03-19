@@ -28,8 +28,8 @@ const ConfirmModal = (props) => {
           {content}
         </Box>
         <Box className={classes.modalFooter}>
-          <Button variant="contained" onClick={onConfirm} fullWidth>{yesLabel}</Button>
           <Button variant="outlined" onClick={onClose} fullWidth>{noLabel}</Button>
+          <Button variant="contained" onClick={onConfirm} fullWidth>{yesLabel}</Button>
         </Box>
       </Box>
     </Modal>

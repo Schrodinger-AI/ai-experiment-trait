@@ -15,6 +15,7 @@ const useStyles = makeStyles(() => ({
         cursor: 'pointer',
         color: '#256dd3',
         textDecoration: 'none',
+        display: 'inline-block',
         '&:hover': {
             textDecoration: 'underline',
             cursor: 'pointer'
@@ -35,8 +36,15 @@ const useStyles = makeStyles(() => ({
         gap: '2px',
         fontSize: '13px',
         fontWeight: 600
-    }
-
+    },
+    contentScroll: {
+        height: 'auto',
+        overflow: 'scroll',
+        margin: '32px 0',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        margin: '8px'
+    },
 }));
   
 export default useStyles;

@@ -6,8 +6,8 @@
  * 
  */
 // GENERIC IMPORT
-import { useState, useRef } from 'react';
-import {Box, TextField, Button, Tooltip, Chip} from '@mui/material';
+import { useState } from 'react';
+import {Box, TextField, Button, Chip} from '@mui/material';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 
@@ -19,6 +19,10 @@ import {generateRandomString, getTodayDateTime} from '../../../utils/file';
 import {SUBMIT_STATUE} from '../../../utils/constants';
 import * as PATH from '../../routes/constants';
 import TraitsModal from './components/traitsModal';
+
+// FILE
+import ConfigFileData from '../../../mockdata/config.json';
+import CreatePromptData from '../../../mockdata/promptCreate.json';
 
 // UTILS IMPORT
 import useNotification from '../../../utils/notification';
@@ -37,8 +41,6 @@ const ImageGeneratorPage = () => {
   const setNotification = useNotification();
 
   // REF VARIABLE
-  const createPromptFileRef = useRef(null);
-  const configFileRef = useRef(null);
   const [selectedTraits, setSelectedTraits] = useState([]);
   const [isOpenModal, setOpenModal] = useState(false);
 
@@ -50,8 +52,8 @@ const ImageGeneratorPage = () => {
     noOfSamples: 1,
     experimentDetails: '',
     traitsFile: null,
-    createPromptFile: null,
-    configFile: null,
+    createPromptFile: CreatePromptData,
+    configFile: JSON.stringify(ConfigFileData),
     submittedDate: getTodayDateTime(),
     status: SUBMIT_STATUE.SUBMITTED,
     comments: []
@@ -63,30 +65,17 @@ const ImageGeneratorPage = () => {
         const file = files[0];
         const reader = new FileReader();
         const fileExtension = file.name.split('.').pop().toLowerCase();
-        if ((fileExtension === 'json' && ['configFile'].includes(name)) || (fileExtension === 'js' && ['createPromptFile'].includes(name))) {
+        if ((fileExtension === 'js' && ['createPromptFile'].includes(name))) {
           reader.onload = (e) => {
-            if (fileExtension == 'json') {
-            const jsonData = JSON.parse(e.target.result);
-            const jsonString = JSON.stringify(jsonData);
-              setState(prevState => ({
-                  ...prevState,
-                  [name]: jsonString,
-              }));
-            } else {
-              let finalContent = e.target.result;
-              setTimeout(() => setState(prevState => ({
-                ...prevState,
-                [name]: finalContent,
-              })), 0);
-            }
+            let finalContent = e.target.result;
+            setTimeout(() => setState(prevState => ({
+              ...prevState,
+              [name]: finalContent,
+            })), 0);
           };
         reader.readAsText(file);
-      } else {
-         if (['configFile'].includes(name)) {
-          setNotification.error('Please upload only JSON file');
-        } else {
-          setNotification.error('Please upload only Javascript file');
-        }
+      } else { 
+        setNotification.error('Please upload only Javascript file');
         setState(prevState => ({
           ...prevState,
           [name]: null,
@@ -114,10 +103,6 @@ const ImageGeneratorPage = () => {
       setNotification.error("Please provide the name of the submitter.");
     } else if (!selectedTraits || selectedTraits.length < 4) {
       setNotification.error("Please select atleast 4 traits.");
-    } else if (!state.createPromptFile) {
-      setNotification.error("Please upload the 'createPrompt' file in JavaScript (.js) format.");
-    } else if (!state.configFile) {
-      setNotification.error("Please upload the configuration file in JSON format.");
     } else if (state.noOfSamples == 0) {
       setNotification.error("Please provide the number of samples.");
     } else {
@@ -176,14 +161,12 @@ const ImageGeneratorPage = () => {
       noOfSamples: 5,
       experimentDetails: '',
       traitsFile: null,
-      createPromptFile: null,
-      configFile: null,
+      createPromptFile: CreatePromptData,
+      configFile: JSON.stringify(ConfigFileData),
       submittedDate: getTodayDateTime(),
       status: SUBMIT_STATUE.SUBMITTED
     });
     setSelectedTraits([]);
-    createPromptFileRef.current.value = null;
-    configFileRef.current.value = null;
   }
 
   const removeTraits = (value, traitType) => {
@@ -204,36 +187,6 @@ const ImageGeneratorPage = () => {
           <TextField  label="Submitter Name" variant="outlined"  required 
             fullWidth={true} value={state.submitterName} className={classes.formTextfield} 
             type='text' onChange={(event) => handleChange(event, 'submitterName')} inputProps={{maxLength: 25}}/>
-        </Box>
-      </Box>
-      <Box className={classes.formRow}>
-        <Box flex={1}>
-          <TextField 
-              accept="image/*" 
-              type="file" 
-              variant="outlined" 
-              className={classes.formTextfield}
-              onChange={(event) => handleChange(event, 'createPromptFile')}
-              fullWidth={true}
-              required
-              inputProps={{
-                ref: createPromptFileRef
-              }}
-              helperText={<>Upload createPrompt file in js format. You can <Tooltip title="You can download and use it but its not latest file."><a href='/sampleFile/createPrompt.js' className={classes.link} download>download</a></Tooltip> sample file here.</>}/>
-        </Box>
-        <Box flex={1}>
-          <TextField 
-            accept="image/*" 
-            type="file" 
-            variant="outlined" 
-            className={classes.formTextfield}
-            onChange={(event) => handleChange(event, 'configFile')}
-            fullWidth={true}
-            required
-            inputProps={{
-              ref: configFileRef
-            }}
-            helperText={<>Upload config file in json format. You can <Tooltip title="You can download and use it but its not latest file."><a href='/sampleFile/config.json' className={classes.link} download>download</a></Tooltip> sample file here.</>}/>
         </Box>
       </Box>
       <Box className={classes.formRow}>

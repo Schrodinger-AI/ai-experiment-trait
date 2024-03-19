@@ -17,6 +17,8 @@ import {SUBMIT_STATUE} from '../../../utils/constants';
 
 // INTERNAL COMPONENT
 import SelectiveTraits from './components/selectiveTraits';
+import ConfigFileSetting from './components/configFileSetting';
+import TraitsFileSetting from './components/traitsFileSetting';
 
 // HOOK
 import {useHook} from './useHook';
@@ -35,7 +37,13 @@ const ExperimentSubmitterPage = () => {
 
   // STATE VARIABLE
   const [isLoading, setLoading] = useState(false);
+  const [isOpenConfigFileModal, setOpenConfigFileModal] = useState(false);
+  const [isOpenTraitsFileModal, setOpenTraitsFileModal] = useState(false);
   const [selectedTraits, setSelectedTraits] = useState([]);
+  const [defaultFile, setDefaultFile] = useState({
+    traitsFile: null,
+    configFile: null,
+  });
   const [state, setState] = useState({
     experimentId: generateRandomString(),
     submitterName: '',
@@ -55,7 +63,8 @@ const ExperimentSubmitterPage = () => {
     setState, 
     {traitFileRef, createPromptFileRef, configFileRef},
     setLoading,
-    selectedTraits
+    selectedTraits,
+    setDefaultFile,
   );
 
   return (
@@ -86,7 +95,7 @@ const ExperimentSubmitterPage = () => {
             inputProps={{
               ref: traitFileRef
             }}
-            helperText={<>Upload Trait definitioins file in json format. You can <Tooltip title="You can download and use it but its not latest file."><a href='/sampleFile/trait-definitioins.json' className={classes.link} download>download</a></Tooltip> sample file here.</>}/>
+            helperText={<>Upload Trait definitioins file in json format. <Tooltip title="You can download and use it but its not latest file."><a href='/sampleFile/trait-definitioins.json' className={classes.link} download>Download</a></Tooltip> sample file.</>}/>
         </Box>
         <Box flex={1}>
           <TextField 
@@ -100,7 +109,7 @@ const ExperimentSubmitterPage = () => {
               inputProps={{
                 ref: createPromptFileRef
               }}
-              helperText={<>Upload createPrompt file in js format. You can <Tooltip title="You can download and use it but its not latest file."><a href='/sampleFile/createPrompt.js' className={classes.link} download>download</a></Tooltip> sample file here.</>}/>
+              helperText={<>Upload createPrompt file in js format. <Tooltip title="You can download and use it but its not latest file."><a href='/sampleFile/createPrompt.js' className={classes.link} download>Download</a></Tooltip> sample file.</>}/>
         </Box>
       </Box>
       <Box className={classes.formRow}>
@@ -116,7 +125,7 @@ const ExperimentSubmitterPage = () => {
             inputProps={{
               ref: configFileRef
             }}
-            helperText={<>Upload config file in json format. You can <Tooltip title="You can download and use it but its not latest file."><a href='/sampleFile/config.json' className={classes.link} download>download</a></Tooltip> sample file here.</>}/>
+            helperText={<>Upload config file in json format. <Tooltip title="You can download and use it but its not latest file."><a href='/sampleFile/config.json' className={classes.link} download>Download</a></Tooltip> sample file. <Tooltip title="You can change the prefix message."><Box className={classes.link}  onClick={() => setOpenConfigFileModal(true)}>Advance setting</Box></Tooltip>.</>}/>
         </Box>
         <Box flex={1}>
           <TextField  label="Number of samples" variant="outlined" required 
@@ -133,6 +142,8 @@ const ExperimentSubmitterPage = () => {
         </Box>
       </Box>
       <SelectiveTraits traitsList={state.traitsFile} {...{selectedTraits, setSelectedTraits}}/>
+      {isOpenConfigFileModal && <ConfigFileSetting configFileObject={state.configFile} {...{state, setState}} onClose={() => setOpenConfigFileModal(false)}/>}
+      {isOpenTraitsFileModal && <TraitsFileSetting traitsFileObject={defaultFile.traitsFile} {...{state, setState}} onClose={() => setOpenTraitsFileModal(false)}/>}
       <Box className={classes.btnContainer} textAlign='right' mt={2}>
           <Button variant="outlined" onClick={resetForm}>Clear</Button>
           <Button variant="contained" onClick={submitForm}>Submit Experiment</Button>
@@ -142,3 +153,5 @@ const ExperimentSubmitterPage = () => {
 };
 
 export default ExperimentSubmitterPage;
+
+//  <Tooltip title="You can add / remove the traits item."><Box className={classes.link}  onClick={() => setOpenTraitsFileModal(true)}>Advance setting</Box></Tooltip>.

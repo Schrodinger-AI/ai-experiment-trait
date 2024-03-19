@@ -64,3 +64,7 @@ export const experimentAlert = {
   [SUBMIT_STATUE.STARTED]: <Alert severity="info">Experiment has been started. Please wait for sometime to view the result.</Alert>,
   [SUBMIT_STATUE.SUBMITTED]: <Alert severity="warning">Experiment not yet completed to view the result.</Alert>,
 }
+
+export const capitalizeFirstLetter = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}

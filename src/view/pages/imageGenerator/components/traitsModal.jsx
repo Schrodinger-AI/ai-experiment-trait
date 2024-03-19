@@ -14,6 +14,7 @@ import TraitsDataList from '../data/traits.json';
 
 // UTILS IMPORT
 import useNotification from '../../../../utils/notification';
+import {capitalizeFirstLetter} from '../../../../utils/file';
 
 // STYLE IMPORT
 import useStyles from '../styles';
@@ -30,7 +31,7 @@ const TraitsModal = (props) => {
   
   // REF VARIABLE
   // const traitsList = objectToArray(TraitsDataList);
-  const traitTypeList = Object.keys(TraitsDataList);
+  const traitTypeList = Object.keys(TraitsDataList).sort();
 
   const checkAddTraits = (value, traitType) => {
       if (isSameCategory(traitType)) {
@@ -78,7 +79,7 @@ const TraitsModal = (props) => {
                 fullWidth
               >
                 {traitTypeList.map((item, index) => (
-                  <MenuItem value={item} key={index}>{item}</MenuItem>
+                  <MenuItem value={item} key={index}>{capitalizeFirstLetter(item)}</MenuItem>
                 ))}
               </Select>
             </FormControl>

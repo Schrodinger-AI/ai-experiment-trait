@@ -16,7 +16,7 @@ import {SUBMIT_STATUE} from '../../../utils/constants';
 import {EXPERIMENT_SUBMIT_API} from '../../../api/constants';
 import * as PATH from '../../routes/constants';
 
-export function useHook(state, setState, fileRef, setLoading, selectedTraits) {
+export function useHook(state, setState, fileRef, setLoading, selectedTraits, setDefaultFile) {
 
     // DECLARE NOTIFICATION AND NAVIDATE
     const setNotification = useNotification();
@@ -128,10 +128,16 @@ export function useHook(state, setState, fileRef, setLoading, selectedTraits) {
                   }));
                 } else {
                   let finalContent = e.target.result;
-                  setTimeout(() => setState(prevState => ({
-                    ...prevState,
-                    [name]: finalContent,
-                  })), 0);
+                  setTimeout(() => {
+                    setState(prevState => ({
+                      ...prevState,
+                      [name]: finalContent,
+                    }));
+                    setDefaultFile(prevState => ({
+                      ...prevState,
+                      [name]: finalContent,
+                    }));
+                }, 0);
                 }
               };
             reader.readAsText(file);
