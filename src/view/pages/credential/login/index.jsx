@@ -28,7 +28,7 @@ import useNotification from '../../../../utils/notification';
 import {FEATURE} from '../../../../utils/feature';
 
 // API
-import {LOGIN_API} from '../../../../api/constants';
+import {LOGIN_API, JSONHeader} from '../../../../api/constants';
 
 // STYLE IMPORT
 import useStyles from './styles';
@@ -51,28 +51,23 @@ const LoginPage = () => {
     }
     setLoading(true);
     try {
-      /* const params = {token}
-      const response = await axios.post(
-        LOGIN_API,{...params},
-              {
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-          }
-      );
-      if (response.data) {
+      const response = await axios.post(LOGIN_API,{token}, JSONHeader);
+      // RESULT 0 -> FAILURE
+      // RESULT 1 -> SUCCESS
+      if (response.data.result) {
         const responseToken = response.data;
         navigate(PATH.HOME_PATH);
         localStorage.setItem('token', responseToken);
       } else {
         setNotification.error("Invalid login credentials");
-      } */
-      if (FEATURE.DISABLE_LOGIN_CHECK || token === LOGIN_TOKEN) {
+      }
+      // STATIC CODE WHEN API NOT READY
+      /** if (FEATURE.DISABLE_LOGIN_CHECK || token === LOGIN_TOKEN) {
         navigate(PATH.HOME_PATH);
         localStorage.setItem('token', token);
       } else {
         setNotification.error("Invalid login credentials");
-      }
+      } */
     } catch(error) {
       console.log("Error: ", error);
       setNotification.error("Something went wrong. Please try again later.");
