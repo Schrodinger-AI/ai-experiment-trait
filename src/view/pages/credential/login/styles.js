@@ -35,9 +35,7 @@ const useStyles = makeStyles(() => ({
         marginTop: '4px'
     },
     loginContent: {
-        flex: 1
-    },
-    loginContent: {
+        flex: 1,
         color: '#fff',
         display: 'inline-flex',
         flexDirection: 'column',

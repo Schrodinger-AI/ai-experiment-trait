@@ -18,7 +18,6 @@ const useStyles = makeStyles(() => ({
             transform: 'scale(1.1)',
             transition: 'all 0.1s linear',
             cursor: 'pointer',
-            cursor: 'pointer',
         },
     }
   }));

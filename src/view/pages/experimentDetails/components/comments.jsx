@@ -6,14 +6,13 @@
  * 
  */
 // GENERIC IMPORT
-import clsx from 'clsx';
 import { useState } from 'react';
 import {Box, TextField, Button} from '@mui/material';
 
 // COMMON COMPONENT
 import {dateTimeDisplayFormat, generateRandomString, getTodayDateTime} from '../../../../utils/file';
-import {SUBMIT_STATUE} from '../../../../utils/constants';
-import {UPDATE_EXPERIMENT_API} from '../../../../api/constants';
+// import {SUBMIT_STATUE} from '../../../../utils/constants';
+// import {UPDATE_EXPERIMENT_API} from '../../../../api/constants';
 
 // UTILS IMPORT
 import useNotification from '../../../../utils/notification';
@@ -29,6 +28,7 @@ const Comments = (props) => {
   const setNotification = useNotification();
 
   // STATE VARIABLE
+  // eslint-disable-next-line no-unused-vars
   const [isLoading, setLoading] = useState(false);
   const [state, setState] = useState({
     id: "",

@@ -1,6 +1,6 @@
 import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles(({spacing, palette}) => ({
+const useStyles = makeStyles(() => ({
   app: {
     background: '#f6f6fa',
     minHeight: '100vh',

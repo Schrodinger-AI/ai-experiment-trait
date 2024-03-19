@@ -24,7 +24,7 @@ import Result from './components/result';
 import useNotification from '../../../utils/notification';
 
 // MOCK DATA
-import ExperimentList from './data/list.json';
+// import ExperimentList from './data/list.json';
 
 // STYLE IMPORT
 import useStyles from './styles';
@@ -101,6 +101,7 @@ const ExperimentDetailsPage = () => {
 
   useEffect(() => {
     getExperimentDetailById();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <Container>

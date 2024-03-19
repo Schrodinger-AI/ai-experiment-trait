@@ -24,7 +24,8 @@ const Notification = (props) => {
         if (props.isOpen) {
             setTimeout(() => props.setNotification({message: '', isOpen: false, type: props.type}), 7000);
         }
-    }, [props.isOpen])
+    // eslint-disable-next-line react-hooks/exhaustive-deps 
+    }, [props.isOpen]) 
     
     return (
         <Box className={clsx(classes.notificationContainer, props.isOpen && classes.showNotification)}>

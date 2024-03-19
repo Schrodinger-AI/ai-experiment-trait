@@ -60,7 +60,7 @@ const ConfigFileSetting = (props) => {
 
     const updateTraitsObject = (value, isChecked) => {
         const updatedTraits = traitObject[selectedTraitType].map(item => {
-            return {...item, isChecked: value == item.value ? isChecked : item.isChecked}
+            return {...item, isChecked: value === item.value ? isChecked : item.isChecked}
         });
         setTraitObject({...traitObject, [selectedTraitType]: updatedTraits});
     }

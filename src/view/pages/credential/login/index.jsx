@@ -23,9 +23,9 @@ import Auth from '../auth';
 import LogoIcon from '../../../../assets/img/aelf-logo.png';
 
 // UTILS
-import {LOGIN_TOKEN} from '../../../../utils/constants';
+// import {LOGIN_TOKEN} from '../../../../utils/constants';
 import useNotification from '../../../../utils/notification';
-import {FEATURE} from '../../../../utils/feature';
+// import {FEATURE} from '../../../../utils/feature';
 
 // API
 import {LOGIN_API, JSONHeader} from '../../../../api/constants';

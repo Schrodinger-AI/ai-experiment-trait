@@ -28,6 +28,7 @@ const HelpPage = () => {
   const [isLoading, setLoading] = useState(false);
   const [expanded, setExpanded] = useState('panel1');
   
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     setTimeout(setLoading(false), 1000);
   })

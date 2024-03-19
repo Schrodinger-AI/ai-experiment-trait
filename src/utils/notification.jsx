@@ -17,7 +17,7 @@ import {NotificationContext} from '../contexts/notificationContext';
 
 function useNotification() {
     const { notification, setNotification } = useContext(NotificationContext);
-
+    console.log(notification);
     const error = (message = formValidationMessages.error()) => {
         setNotification({type: NotificationType.error, message: message, isOpen: true});
     }

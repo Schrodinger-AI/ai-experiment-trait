@@ -43,6 +43,7 @@ const Auth = () => {
         }
         setLoading(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => checkAuth(), []);
     if (isLoading) return <DarkLoader/>;
 }

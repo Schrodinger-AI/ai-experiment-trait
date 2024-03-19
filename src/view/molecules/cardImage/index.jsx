@@ -11,15 +11,15 @@ import Magnifier from "react-magnifier";
 import WebPImage from 'react-webp-image';
 
 // UTILS 
-import {handleDownload} from '../../../utils/file';
-import {IMAGE_FORMAT} from '../../../utils/constants';
+// import {handleDownload} from '../../../utils/file';
+// import {IMAGE_FORMAT} from '../../../utils/constants';
 import {FEATURE} from '../../../utils/feature';
 
 // STYLE IMPORT
 import useStyles from './styles';
 
 const CardImage = (props) => {
-    const {imageSrc, imageRef, title, size, handleImageModal, isDownloadable, isWebpImage, imageSize, ...rest} = props.file;
+    const {imageSrc, imageRef, title, size, handleImageModal, isDownloadable, isWebpImage, imageSize} = props.file;
     // DECLARE STYLE
     const classes = useStyles();
     const sourceImg = imageRef?.current?.src || imageSrc;

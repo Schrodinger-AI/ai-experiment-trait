@@ -33,7 +33,7 @@ export function useHook(state, setState, fileRef, setLoading, selectedTraits, se
           setNotification.error("Please upload the 'createPrompt' file in JavaScript (.js) format.");
         } else if (!state.configFile) {
           setNotification.error("Please upload the configuration file in JSON format.");
-        } else if (state.noOfSamples == 0) {
+        } else if (state.noOfSamples === 0) {
           setNotification.error("Please provide the number of samples.");
         } else {
           return true;
@@ -119,7 +119,7 @@ export function useHook(state, setState, fileRef, setLoading, selectedTraits, se
             const fileExtension = file.name.split('.').pop().toLowerCase();
             if ((fileExtension === 'json' && ['configFile', 'traitsFile'].includes(name)) || (fileExtension === 'js' && ['createPromptFile'].includes(name))) {
               reader.onload = (e) => {
-                if (fileExtension == 'json') {
+                if (fileExtension === 'json') {
                 const jsonData = JSON.parse(e.target.result);
                 const jsonString = JSON.stringify(jsonData);
                   setState(prevState => ({

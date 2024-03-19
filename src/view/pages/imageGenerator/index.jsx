@@ -103,7 +103,7 @@ const ImageGeneratorPage = () => {
       setNotification.error("Please provide the name of the submitter.");
     } else if (!selectedTraits || selectedTraits.length < 4) {
       setNotification.error("Please select atleast 4 traits.");
-    } else if (state.noOfSamples == 0) {
+    } else if (state.noOfSamples === 0) {
       setNotification.error("Please provide the number of samples.");
     } else {
       return true;
@@ -170,7 +170,7 @@ const ImageGeneratorPage = () => {
   }
 
   const removeTraits = (value, traitType) => {
-    const updatedList = selectedTraits.filter(item => !(item.value == value && item.traitType == traitType));
+    const updatedList = selectedTraits.filter(item => !(item.value === value && item.traitType === traitType));
     setSelectedTraits(updatedList);
   }
 

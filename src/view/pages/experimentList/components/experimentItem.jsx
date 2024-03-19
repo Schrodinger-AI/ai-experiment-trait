@@ -29,7 +29,6 @@ const ExperimentItem = (props) => {
 
   const copyWebAddressLink = () => {
     const host = window.location.host; // Get the host (domain) part of the URL
-    const path = window.location.pathname; // Get the path part of the URL
     const protocol = window.location.protocol; // Get the protocol (http or https) part of the URL
     const fullLink = `${protocol}://${host}/#/experimentDetails/${props.data.experimentId}`
     navigator.clipboard.writeText(fullLink)

@@ -40,10 +40,9 @@ const useStyles = makeStyles(() => ({
     contentScroll: {
         height: 'auto',
         overflow: 'scroll',
-        margin: '32px 0',
+        margin: '8px',
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-        margin: '8px'
     },
 }));
   

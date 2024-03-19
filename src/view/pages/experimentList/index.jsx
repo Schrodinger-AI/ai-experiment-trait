@@ -17,19 +17,13 @@ import ExperimentTiles from './components/experimentTiles';
 import ExperimentItem from './components/experimentItem';
 
 // MOCK DATA
-import ExperimentList from './data/list.json';
+// import ExperimentList from './data/list.json';
 
 // UTILS IMPORT
 import useNotification from '../../../utils/notification';
 import {sortList} from './utils';
 
-// STYLE IMPORT
-import useStyles from './styles';
-
 const ExperimentListPage = () => {
-  // DECLARE STYLE
-  const classes = useStyles();
-
   // DECLARE NOTIFICATION AND NAVIDATE
   const setNotification = useNotification();
 
@@ -56,6 +50,7 @@ const ExperimentListPage = () => {
 
   useEffect(() => {
     getExperimentList();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

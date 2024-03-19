@@ -12,15 +12,11 @@ import {useState, useEffect} from 'react';
 import PageHeader from '../common/header/pageHeader';
 import {Empty, Container} from '../../atom';
 
-// STYLE IMPORT
-import useStyles from './styles';
-
 const DashboardPage = () => {
-  const classes = useStyles();
-  
   // STATE VARIABLE
   const [isLoading, setLoading] = useState(false);
   
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     setTimeout(setLoading(false), 1000);
   })

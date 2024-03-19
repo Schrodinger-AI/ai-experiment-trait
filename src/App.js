@@ -6,7 +6,7 @@
  * 
  */
 // GENERIC IMPORT
-import {useReducer, useState} from 'react';
+import React, {useReducer, useState} from 'react';
 
 // COMMON COMPONENT
 import {Notification} from './view/molecules';

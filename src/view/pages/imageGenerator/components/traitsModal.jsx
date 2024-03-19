@@ -45,16 +45,16 @@ const TraitsModal = (props) => {
   }
 
   const isSameCategory = (traitType) => {
-    return props.selectedTraits.some(item => item.traitType == traitType)
+    return props.selectedTraits.some(item => item.traitType === traitType)
   }
 
   const removeTraits = (value, traitType) => {
-    const updatedList = props.selectedTraits.filter(item => !(item.value == value && item.traitType == traitType));
+    const updatedList = props.selectedTraits.filter(item => !(item.value === value && item.traitType === traitType));
     props.setSelectedTraits(updatedList);
   }
 
   const isExists = (value, traitType) => {
-    return props.selectedTraits.some(item => item.value == value && item.traitType == traitType)
+    return props.selectedTraits.some(item => item.value === value && item.traitType === traitType)
   }
 
   const handleChange = (event) => {
