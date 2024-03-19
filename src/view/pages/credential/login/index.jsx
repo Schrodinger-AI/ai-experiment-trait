@@ -25,6 +25,7 @@ import LogoIcon from '../../../../assets/img/aelf-logo.png';
 // UTILS
 import {LOGIN_TOKEN} from '../../../../utils/constants';
 import useNotification from '../../../../utils/notification';
+import {FEATURE} from '../../../../utils/feature';
 
 // API
 import {LOGIN_API} from '../../../../api/constants';
@@ -66,7 +67,7 @@ const LoginPage = () => {
       } else {
         setNotification.error("Invalid login credentials");
       } */
-      if (token === LOGIN_TOKEN) {
+      if (FEATURE.DISABLE_LOGIN_CHECK || token === LOGIN_TOKEN) {
         navigate(PATH.HOME_PATH);
         localStorage.setItem('token', token);
       } else {
@@ -87,7 +88,13 @@ const LoginPage = () => {
       return true;
     }
     return false;
-};
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      onLogin();
+    }
+  };
 
   return (
     <>
@@ -108,7 +115,7 @@ const LoginPage = () => {
             </Box>
             <TextField type='password' label="Token" variant="outlined" 
             fullWidth placeholder='Please enter the token' value={token} size='small'
-            onChange={(event) => setToken(event.target.value)}/>
+            onChange={(event) => setToken(event.target.value)} onKeyDown={handleKeyDown}/>
             <Button variant="contained" fullWidth onClick={onLogin}>Login</Button>
           </Box>
         </Box>
