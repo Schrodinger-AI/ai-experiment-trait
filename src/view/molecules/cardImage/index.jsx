@@ -27,7 +27,7 @@ const CardImage = (props) => {
 
     return (
         <Box className={classes.cardImageContainer}>
-            {!isWebpImage && <Magnifier onClick={() => handleImageModal?.(sourceImg)} 
+            {!isWebpImage && <img onClick={() => handleImageModal?.(sourceImg)} 
                 {...(imageRef && { ref: imageRef })} 
                 className={classes.cardImage} src={imageSrc} 
                 width={widthSize}

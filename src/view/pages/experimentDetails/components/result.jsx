@@ -42,34 +42,44 @@ const Result = (props) => {
 
     return (
         <Box>
+            <table  className={classes.dataTable}>
+            <tr className={classes.dataList} >
+                <td width={300} className={classes.dataListItem} >Sample image</td>
+                <td className={classes.dataListItem} >Prompt</td>
+                <td className={classes.dataListItem} >Revised prompt</td>
+                <td className={classes.dataListItem} >Traits</td>
+            </tr>
             {props?.result.map((item, index) => (
-            <Box className={classes.dataList} key={`result-image-${index}`}>
-                <Box width={300} className={classes.dataListItem}>
-                <Box>
-                    <CardImage file={
-                    {
-                        imageSrc: `data:image/webp;base64, ${item.imageResult}`,
-                        handleImageModal: handleImageModal,
-                        imageRef: imageRef,
-                    }
-                    }/>
-                    <Box className={classes.title} textAlign={'center'} marginTop={0.5}><strong>Created date: </strong>{Date(item.create_date)}</Box>
-                </Box>
-                </Box>
-                <Box className={classes.dataListItem}>
-                <Box className={classes.title} marginTop={0.5}><strong>Prompt: </strong>{item.prompt}&nbsp;<i className={clsx("fa fa-clone", classes.copyIcon)} onClick={() => navigator.clipboard.writeText(item.prompt)}></i></Box>
-                </Box>
-                <Box className={classes.dataListItem}>
-                <Box className={classes.title} marginTop={1}><strong>Revised prompt: </strong>{item.revised_prompt}&nbsp;<i className={clsx("fa fa-clone", classes.copyIcon)} onClick={() => navigator.clipboard.writeText(item.revised_prompt)}></i></Box>
-                </Box>
-                {item.traits && <Box className={classes.dataListItem}>
+            <tr className={classes.dataList} key={`result-image-${index}`}>
+                <td width={300} className={classes.dataListItem}>
                     <Box>
-                        <Box className={classes.title} marginTop={1}><strong>Traits: </strong>{JSON.stringify(item.traits)}&nbsp;</Box>
-                        <Box display={'block'} mt={1}><Chip label={<><strong>Total traits:</strong> {item.traits.length}</>} size="small" variant="outlined" /></Box>
+                        <CardImage file={
+                        {
+                            imageSrc: `data:image/webp;base64, ${item.imageResult}`,
+                            handleImageModal: handleImageModal,
+                            imageRef: imageRef,
+                        }
+                        }/>
+                        <Box className={classes.title} textAlign={'center'} marginTop={0.5}><strong>Created date: </strong>{Date(item.create_date)}</Box>
                     </Box>
-                </Box>}
-            </Box>
+                </td>
+                <td className={classes.dataListItem}>
+                    <Box className={classes.title} marginTop={0.5}>{item.prompt}&nbsp;<i className={clsx("fa fa-clone", classes.copyIcon)} onClick={() => navigator.clipboard.writeText(item.prompt)}></i></Box>
+                </td>
+                <td className={classes.dataListItem}>
+                    <Box className={classes.title} marginTop={1}>{item.revised_prompt}&nbsp;<i className={clsx("fa fa-clone", classes.copyIcon)} onClick={() => navigator.clipboard.writeText(item.revised_prompt)}></i></Box>
+                </td>
+                <td className={classes.dataListItem}>
+                    {item.traits && 
+                        <Box>
+                            <Box className={classes.title} marginTop={1}><strong>Traits: </strong>{JSON.stringify(item.traits)}&nbsp;</Box>
+                            <Box display={'block'} mt={1}><Chip label={<><strong>Total traits:</strong> {item.traits.length}</>} size="small" variant="outlined" /></Box>
+                        </Box>
+                    }
+                </td>
+            </tr>
             ))}
+            </table>
             {imageModal.isOpen && <Lightbox
                 small={imageModal.src}
                 large={imageModal.src}

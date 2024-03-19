@@ -52,17 +52,18 @@ const useStyles = makeStyles(() => ({
     formTextfield: {
         background: '#fff'
     },
-    dataList: {
-        padding: 0,
-        display: 'flex',
+    dataTable: {
+        width: '100%',
         border: '1px solid #ccc',
-        flexDirection: 'row',
+    },
+    dataList: {
+        padding: 1,
+        border: '1px solid #ccc',
     },
     dataListItem: {
-        display: 'inline-flex',
         padding: '8px',
+        border: '1px solid #ccc',
         margin: '0 12px 24px 0',
-        alignItems: 'center'
     },
     title: {
         marginTop: '-12px',
