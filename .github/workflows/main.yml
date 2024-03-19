@@ -18,8 +18,14 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - run: npm install --force
-      - run: CI=false npm run build
+      - name: Run install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install # will run `yarn install` command
+      - name: Build production bundle
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: build
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
