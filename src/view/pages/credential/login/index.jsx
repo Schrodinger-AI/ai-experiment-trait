@@ -9,6 +9,7 @@
 import {useState} from 'react';
 import {Box, TextField, Button} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
+import axios from 'axios';
 
 // COMPONENT IMPORT
 import Header from '../../common/header';
@@ -16,6 +17,7 @@ import {Loader} from '../../../atom';
 
 // ROUTER IMPORT
 import * as PATH from '../../../routes/constants';
+import Auth from '../auth';
 
 // ICON IMPORT
 import LogoIcon from '../../../../assets/img/aelf-logo.png';
@@ -23,6 +25,9 @@ import LogoIcon from '../../../../assets/img/aelf-logo.png';
 // UTILS
 import {LOGIN_TOKEN} from '../../../../utils/constants';
 import useNotification from '../../../../utils/notification';
+
+// API
+import {LOGIN_API} from '../../../../api/constants';
 
 // STYLE IMPORT
 import useStyles from './styles';
@@ -39,12 +44,28 @@ const LoginPage = () => {
   const [isLoading, setLoading] = useState(false);
   const [token, setToken] = useState('');
 
-  const onLogin = () => {
+  const onLogin = async () => {
     if (!isFormValid()) {
       return;
     }
     setLoading(true);
     try {
+      /* const params = {token}
+      const response = await axios.post(
+        LOGIN_API,{...params},
+              {
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+          }
+      );
+      if (response.data) {
+        const responseToken = response.data;
+        navigate(PATH.HOME_PATH);
+        localStorage.setItem('token', responseToken);
+      } else {
+        setNotification.error("Invalid login credentials");
+      } */
       if (token === LOGIN_TOKEN) {
         navigate(PATH.HOME_PATH);
         localStorage.setItem('token', token);
@@ -92,6 +113,7 @@ const LoginPage = () => {
           </Box>
         </Box>
       </Box>
+      <Auth/>
     </>
   )
 }

@@ -22,7 +22,7 @@ const ConfirmModal = (props) => {
   return (
     <Modal open>
       <Box className={classes.modal}>
-        <Box className={classes.icon}><i class="fa fa-exclamation-triangle"></i></Box>
+        <Box className={classes.icon}><i className="fa fa-exclamation-triangle"></i></Box>
         <Box className={classes.modalTitle}>{title}</Box>
         <Box className={classes.modalSubtitle}>
           {content}

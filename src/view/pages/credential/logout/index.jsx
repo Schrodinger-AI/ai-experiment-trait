@@ -5,24 +5,16 @@
  * @date - 1st March, 2024
  * 
  */
-// GENERIC IMPORT
-import {useNavigate} from 'react-router-dom';
-
 // COMPONENT IMPORT
 import {ConfirmModal} from '../../../atom';
 
-// ROUTER IMPORT
-import * as PATH from '../../../routes/constants';
+// HOOK IMPORT
+import {useLogoutHook} from './useLogoutHook';
 
 const LogoutPage = (props) => {
 
-  // NAVBAR
-  const navigate = useNavigate();
-
-  const onLogout = () => {
-    localStorage.clear();
-    navigate(PATH.LOGIN_PATH);
-  };
+  // HOOK
+  const {onLogout} = useLogoutHook();
 
   return (
     <ConfirmModal
