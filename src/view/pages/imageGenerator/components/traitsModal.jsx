@@ -11,7 +11,7 @@ import React, { useState } from 'react';
 import {Box, Chip, Modal, Button, Select, MenuItem, FormControl, InputLabel} from '@mui/material';
 
 // JSON DATA
-import TraitsDataList from '../data/traits.json';
+import TraitsDataList from '../../../../mockData/traits.json';
 
 // UTILS IMPORT
 import useNotification from '../../../../utils/notification';
