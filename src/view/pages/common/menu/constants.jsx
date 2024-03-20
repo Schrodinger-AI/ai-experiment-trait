@@ -37,6 +37,12 @@ export const utilsMenuItems = [
         icon: <i className="fa fa-picture-o"></i>,
         link: PATH.IMAGE_GENERATOR_PATH,
     },
+    {
+        id: 'STATICFILEIMAGEGENERATOR',
+        label: 'Static Image Generator',
+        icon: <i className="fa fa-picture-o"></i>,
+        link: PATH.STATIC_FILE_IMAGE_GENERATOR_PATH,
+    },
 ];
 
 export const settingsMenuItems = [

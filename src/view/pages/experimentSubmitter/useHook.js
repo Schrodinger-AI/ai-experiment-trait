@@ -35,6 +35,10 @@ export function useHook(state, setState, fileRef, setLoading, selectedTraits, se
           setNotification.error("Please upload the configuration file in JSON format.");
         } else if (state.noOfSamples === 0) {
           setNotification.error("Please provide the number of samples.");
+        }  else if (!state.minNumOfTraits || state.minNumOfTraits === 0) {
+          setNotification.error("Please provide the minimum No Of Traits.");
+        } else if (!state.maxNumOfTraits || state.maxNumOfTraits === 0) {
+          setNotification.error("Please provide the maximum No Of Traits.");
         } else {
           return true;
         }
@@ -52,7 +56,9 @@ export function useHook(state, setState, fileRef, setLoading, selectedTraits, se
         createPromptFile: null,
         configFile: null,
         submittedDate: getTodayDateTime(),
-        status: SUBMIT_STATUE.SUBMITTED
+        status: SUBMIT_STATUE.SUBMITTED,
+        minNumOfTraits: 3,
+        maxNumOfTraits: 5,
         });
         fileRef.traitFileRef.current.value = null;
         fileRef.createPromptFileRef.current.value = null;
@@ -153,6 +159,11 @@ export function useHook(state, setState, fileRef, setLoading, selectedTraits, se
             }));
             event.target.value = null;
           }
+        } else if (type === 'number') {
+          setState(prevState => ({
+              ...prevState,
+              [name]: parseInt(value)
+          }));
         } else {
             setState(prevState => ({
                 ...prevState,

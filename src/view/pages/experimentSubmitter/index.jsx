@@ -54,7 +54,9 @@ const ExperimentSubmitterPage = () => {
     configFile: null,
     submittedDate: getTodayDateTime(),
     status: SUBMIT_STATUE.SUBMITTED,
-    comments: []
+    comments: [],
+    minNumOfTraits: 3,
+    maxNumOfTraits: 5,
   });
 
   // HOOK VARIABLE
@@ -132,6 +134,18 @@ const ExperimentSubmitterPage = () => {
             fullWidth={true} value={state.noOfSamples} className={classes.formTextfield} 
             type='number' 
             onChange={(event) => handleChange(event, 'noOfSamples')} inputProps={{min: "1", max: "1000"}}/>
+        </Box>
+      </Box>
+      <Box className={classes.formRow}>
+        <Box flex={1}>
+          <TextField  label="Mininum No Of Traits" variant="outlined" required 
+            fullWidth={true} value={state.minNumOfTraits} className={classes.formTextfield} 
+            type='number' onChange={(event) => handleChange(event, 'minNumOfTraits')} inputProps={{min: 1, max: 25}}/>
+        </Box>
+        <Box flex={1}>
+          <TextField  label="Maximum No Of Traits" variant="outlined"  required 
+            fullWidth={true}  value={state.maxNumOfTraits} className={classes.formTextfield} 
+            type='number' onChange={(event) => handleChange(event, 'maxNumOfTraits')} inputProps={{min: 1, max: 25}}/>
         </Box>
       </Box>
       <Box className={classes.formRow}>

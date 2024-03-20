@@ -24,6 +24,7 @@ import ExperimentListPage from '../pages/experimentList';
 import ExperimentSubmitterPage from '../pages/experimentSubmitter';
 import ExperimentDetailsPage from '../pages/experimentDetails';
 import ImageGeneratorPage from '../pages/imageGenerator';
+import StaticFileImageGeneratorPage from '../pages/StaticFileImageGenerator';
 import HelpPage from '../pages/help';
 import Auth from '../pages/credential/auth';
 
@@ -47,6 +48,7 @@ const AppRoutes = () => {
                             <Route path={PATH.EXPERIMENT_LIST_PATH} element={<ExperimentListPage />}/>
                             <Route path={PATH.EXPERIMENT_DETAILS_PATH} element={<ExperimentDetailsPage />}/>
                             <Route path={PATH.IMAGE_GENERATOR_PATH} element={<ImageGeneratorPage />}/>
+                            <Route path={PATH.STATIC_FILE_IMAGE_GENERATOR_PATH} element={<StaticFileImageGeneratorPage />}/>
                             <Route path={PATH.HELP_PATH} element={<HelpPage />}/>
                             <Route path="*" element={<NoPage />} />
                         </Routes>
