@@ -44,6 +44,25 @@ const useStyles = makeStyles(() => ({
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
     },
+    addIconContainer: {
+        fontSize: '14px',
+        fontWeight: 500,
+        display: 'inline-flex',
+        alignItems: 'center',
+        background: '#256dd3',
+        color: '#fff',
+        padding: '0 6px',
+        width: '120px',
+        justifyContent: 'center',
+        borderRadius: '16px',
+        whiteSpace: 'nowrap',
+        height: '35px',
+        marginTop: '4px',
+        cursor: 'pointer'
+    },
+    addIcon: {
+        marginRight: '4px'
+    }
 }));
   
 export default useStyles;

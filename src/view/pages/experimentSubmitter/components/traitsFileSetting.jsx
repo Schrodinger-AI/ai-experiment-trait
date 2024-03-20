@@ -8,6 +8,7 @@
  */
 // GENERIC IMPORT
 import React, { useState } from 'react';
+import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import {Box, FormControl, Alert, InputLabel, Select, MenuItem, Checkbox, FormGroup, FormControlLabel} from '@mui/material';
 
 // UTILS IMPORT
@@ -133,8 +134,9 @@ const ConfigFileSetting = (props) => {
                             </FormGroup>
                         </Box>
                     ))}
+                    {selectedTraitType && <Box className={classes.addIconContainer} onClick={() => setAddTraitModalOpen(true)}><AddCircleRoundedIcon className={classes.addIcon}/>Add new trait</Box>}
                     </Box>
-                    {isAddTraitModalOpen && <AddTrait {...{state, setState, traitObject}}/>}
+                    {isAddTraitModalOpen && <AddTrait {...{state, setState, traitObject, selectedTraitType}} onClose={() => setAddTraitModalOpen(false)}/>}
                 </Box> : <Alert severity='info' fullWidth>{getAlertMessage()}</Alert>
                 }
             </Box>

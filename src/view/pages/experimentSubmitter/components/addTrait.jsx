@@ -24,7 +24,7 @@ const AddTrait = (props) => {
     // STATE VARIABLE
     const [newTrait, setNewTrait] = useState('');
 
-    const {state, setState, traitObject} = props;
+    const {state, setState, traitObject, onClose, selectedTraitType} = props;
     const [isLoading, setLoading] = useState(false);
 
     const onAdd = () => {
@@ -32,11 +32,7 @@ const AddTrait = (props) => {
             return;
           }
         setLoading(true);
-
-        for (const [key, value] of Object.entries(traitObject)) {
-            value.push(newTrait);
-            traitObject[key] = value;
-        }
+        traitObject[selectedTraitType].push({value: newTrait, isChecked: true});
         setState({...state, traitsFile: JSON.stringify(traitObject)});
 
         setNotification.success("New trait created successfully.");
@@ -56,7 +52,7 @@ const AddTrait = (props) => {
         <FormModal
         title='Add new trait'
         yesLabel='Add'
-        onClose={props.onClose}
+        onClose={onClose}
         onConfirm={onAdd}
         size='small'
     >
