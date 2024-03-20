@@ -8,7 +8,7 @@
 // GENERIC IMPORT
 import React, {useState} from 'react';
 import {Box, TextField, Button} from '@mui/material';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 
 // COMPONENT IMPORT
@@ -37,13 +37,16 @@ const LoginPage = () => {
   // DECLARE STYLE
   const classes = useStyles();
 
+  // PARAMS
+  const { password } = useParams();
+
   // DECLARE NOTIFICATION AND NAVIDATE
   const setNotification = useNotification();
   const navigate = useNavigate();
 
   // STATE VARIABLE
   const [isLoading, setLoading] = useState(false);
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState(password || '');
 
   const onLogin = async () => {
     if (!isFormValid()) {
