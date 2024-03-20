@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * 
  * Selective Traits component
@@ -6,7 +7,7 @@
  * 
  */
 // GENERIC IMPORT
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {Box, Checkbox, FormControlLabel, Chip, Alert} from '@mui/material';
 
 // STYLE IMPORT
@@ -49,7 +50,7 @@ const SelectiveTraits = (props) => {
                 <FormControlLabel control={<Checkbox disabled={!props?.traitsList} onChange={handleCheckbox} checked={isCheckTicked}/>} label="Selective traits (Optional)" />
                 {isCheckTicked && <Box>Total selected traits: {props.selectedTraits.length}</Box>}
             </Box>
-            <Alert color="warning">To enable selective traits, begin by uploading the 'traits definition file'. Then, select 'Selective traits' checkbox, and choose the desired traits type from the options below. Only the selected traits type will be included in generating the image.</Alert>
+            <Alert color="warning">To enable selective traits, begin by uploading the &apos;traits definition file&apos;. Then, select &apos;Selective traits&apos; checkbox, and choose the desired traits type from the options below. Only the selected traits type will be included in generating the image.</Alert>
             {isCheckTicked && 
                 <Box mt={1}>{traitsTypeList.map((traitType, index) => (
                     <Chip color="primary" onClick={() => addTraits(traitType)} label={traitType} 

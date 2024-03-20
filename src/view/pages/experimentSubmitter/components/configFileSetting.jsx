@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * 
  * Config File Setting component
@@ -6,7 +7,7 @@
  * 
  */
 // GENERIC IMPORT
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {Box, TextField, Alert} from '@mui/material';
 
 // UTILS IMPORT
@@ -66,7 +67,7 @@ const ConfigFileSetting = (props) => {
             isYesButtonDisabled={!isUpdatable || isLoading}
             size='small'
         >
-            <Box mt={2} mb={2}>
+            <Box mt={2} mb={2} width={'100%'}>
                 {(prefix && isUpdatable) ? 
                 <Box>
                     <TextField label="Prefix" variant="outlined" value={prefix}

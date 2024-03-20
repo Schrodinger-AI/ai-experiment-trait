@@ -7,7 +7,7 @@
  */
 // GENERIC IMPORT
 import clsx from 'clsx';
-import {useContext, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Box} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 

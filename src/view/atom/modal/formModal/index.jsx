@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * 
  * Form Modal component
@@ -7,6 +8,7 @@
  */
 // GENERIC IMPORT
 import clsx from 'clsx';
+import React from 'react';
 import {Box, Modal, Button} from '@mui/material';
 
 

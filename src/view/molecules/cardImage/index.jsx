@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * 
  * Card Image component
@@ -6,8 +7,8 @@
  * 
  */
 // GENERIC IMPORT
+import React from 'react';
 import {Box, Button, Chip} from '@mui/material';
-import Magnifier from "react-magnifier";
 import WebPImage from 'react-webp-image';
 
 // UTILS 

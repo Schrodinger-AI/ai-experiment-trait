@@ -6,7 +6,7 @@
  * 
  */
 // GENERIC IMPORT
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 
 // COMPONENT IMPORT
 import PageHeader from '../common/header/pageHeader';
@@ -16,7 +16,6 @@ const DashboardPage = () => {
   // STATE VARIABLE
   const [isLoading, setLoading] = useState(false);
   
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     setTimeout(setLoading(false), 1000);
   })

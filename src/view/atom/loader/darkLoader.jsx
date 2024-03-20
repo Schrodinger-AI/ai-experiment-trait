@@ -6,8 +6,8 @@
  * 
  */
 // GENERIC IMPORT
-import {Box} from '@mui/material';
-import {Backdrop, CircularProgress} from '@mui/material';
+import React from 'react';
+import {Backdrop, CircularProgress, Box} from '@mui/material';
 
 const DarkLoader = () => {
 

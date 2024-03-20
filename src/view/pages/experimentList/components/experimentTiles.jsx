@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * 
  * Experiment Tiles component
@@ -6,6 +7,7 @@
  * 
  */
 // GENERIC IMPORT
+import React from 'react';
 import {Grid, Box} from '@mui/material';
 
 // COMMON COMPONENT

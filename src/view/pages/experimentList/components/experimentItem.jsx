@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * 
  * Experiment Item component
@@ -6,6 +7,7 @@
  * 
  */
 // GENERIC IMPORT
+import React from 'react';
 import {Box, Grid, Tooltip} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 

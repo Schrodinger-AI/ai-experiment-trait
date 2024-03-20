@@ -5,6 +5,8 @@
  * @date - 1st March, 2024
  * 
  */
+// GENERIC IMPORT
+import React from 'react';
 // STYLE IMPORT
 import useStyles from './styles';
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * 
  * Notification component
@@ -7,7 +8,7 @@
  */
 // GENERIC IMPORT
 import clsx from 'clsx';
-import {useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {Box, Alert} from '@mui/material';
 
 // UTILS IMPORT 
@@ -24,7 +25,6 @@ const Notification = (props) => {
         if (props.isOpen) {
             setTimeout(() => props.setNotification({message: '', isOpen: false, type: props.type}), 7000);
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps 
     }, [props.isOpen]) 
     
     return (

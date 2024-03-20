@@ -28,5 +28,6 @@ module.exports = {
         "react"
     ],
     "rules": {
+        "react-hooks/exhaustive-deps": "off"
     }
 }

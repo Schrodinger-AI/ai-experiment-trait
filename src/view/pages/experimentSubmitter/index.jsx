@@ -6,7 +6,7 @@
  * 
  */
 // GENERIC IMPORT
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import {Box, TextField, Button, Tooltip} from '@mui/material';
 
 // COMMON COMPONENT

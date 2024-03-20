@@ -6,7 +6,7 @@
  * 
  */
 // GENERIC IMPORT
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 
 // COMPONENT IMPORT
@@ -43,7 +43,6 @@ const Auth = () => {
         }
         setLoading(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => checkAuth(), []);
     if (isLoading) return <DarkLoader/>;
 }

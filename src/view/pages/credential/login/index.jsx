@@ -6,7 +6,7 @@
  * 
  */
 // GENERIC IMPORT
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {Box, TextField, Button} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
@@ -110,7 +110,7 @@ const LoginPage = () => {
           <Box className={classes.loginBox}>
             <Box>
               <Box className={classes.loginTitle}>Login</Box>
-              <Box className={classes.loginSubTitle}>Don't have an account? Please contact our <Box className={classes.link} onClick={contactAdmin}>admin team</Box></Box>
+              <Box className={classes.loginSubTitle}>Don&apos;t have an account? Please contact our <Box className={classes.link} onClick={contactAdmin}>admin team</Box></Box>
             </Box>
             <TextField type='password' label="Password" variant="outlined" 
             fullWidth placeholder='Please enter the token' value={token} size='small'

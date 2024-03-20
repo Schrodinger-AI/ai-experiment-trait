@@ -6,7 +6,7 @@
  * 
  */
 // GENERIC IMPORT
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Accordion, AccordionSummary, AccordionDetails} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
@@ -28,7 +28,6 @@ const HelpPage = () => {
   const [isLoading, setLoading] = useState(false);
   const [expanded, setExpanded] = useState('panel1');
   
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     setTimeout(setLoading(false), 1000);
   })

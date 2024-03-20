@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * 
  * Traits File Setting component
@@ -6,7 +7,7 @@
  * 
  */
 // GENERIC IMPORT
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {Box, FormControl, Alert, InputLabel, Select, MenuItem, Checkbox, FormGroup, FormControlLabel} from '@mui/material';
 
 // UTILS IMPORT
@@ -15,6 +16,9 @@ import {capitalizeFirstLetter} from '../../../../utils/file';
 
 // COMPONENT IMPORT
 import {FormModal} from '../../../atom';
+
+// INTERNAL IMPORT
+import AddTrait from './addTrait';
 
 // STYLE IMPORT
 import useStyles from '../styles';
@@ -44,6 +48,8 @@ const ConfigFileSetting = (props) => {
     // STATE VARIABLE
     const [selectedTraitType, setSelectedTraitType] = useState();
     const [isLoading, setLoading] = useState(false);
+    const [isAddTraitModalOpen, setAddTraitModalOpen] = useState(false);
+    console.log(setAddTraitModalOpen);
     const [traitObject, setTraitObject] = useState(formatTraitsObject());
     const [selectAll, setSelectAll] = useState(false);
     const traitTypeList = props?.traitsFileObject ? Object.keys(JSON.parse(props?.traitsFileObject)).sort() : [];
@@ -121,13 +127,14 @@ const ConfigFileSetting = (props) => {
                     <Box className={classes.contentScroll}>
                     
                     {selectedTraitType && traitObject?.[selectedTraitType].map((item, index) => (
-                        <Box>
+                        <Box key={index}>
                             <FormGroup key={`${item.value}-${selectedTraitType}-${index}`}>
                                 <FormControlLabel control={<Checkbox checked={item.isChecked} onChange={(event) => updateTraitsObject(item.value, event.target.checked)} />} label={item.value} />
                             </FormGroup>
                         </Box>
                     ))}
                     </Box>
+                    {isAddTraitModalOpen && <AddTrait {...{state, setState, traitObject}}/>}
                 </Box> : <Alert severity='info' fullWidth>{getAlertMessage()}</Alert>
                 }
             </Box>

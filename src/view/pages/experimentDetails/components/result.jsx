@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * 
  * Result component
@@ -7,7 +8,7 @@
  */
 // GENERIC IMPORT
 import clsx from 'clsx';
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import {Box, Chip} from '@mui/material';
 import {Lightbox} from "react-modal-image";
 

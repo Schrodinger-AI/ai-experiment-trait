@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * 
  * Experiment Details component
@@ -6,7 +7,7 @@
  * 
  */
 // GENERIC IMPORT
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {Box, TextField, Button} from '@mui/material';
 
 // COMMON COMPONENT

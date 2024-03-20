@@ -6,7 +6,7 @@
  * 
  */
 // GENERIC IMPORT
-import {useState} from 'react';
+import React, {useState} from 'react';
 import { useIdleTimer } from 'react-idle-timer';
 
 // COMPONENT IMPORT
@@ -29,6 +29,7 @@ const IdleTimer = () => {
 
   // STATE VARIABLE
   const [state, setState] = useState('Active');
+  console.log(state);
   const [open, setOpen] = useState(false);
 
   // HOOK

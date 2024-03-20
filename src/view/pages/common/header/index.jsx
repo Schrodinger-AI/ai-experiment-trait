@@ -6,6 +6,9 @@
  * @date - 1st March, 2024
  * 
  */
+// GENERIC IMPORT
+import React from 'react';
+
 // ICON IMPORT
 import LogoIcon from '../../../../assets/img/logo-mainnet.svg';
 

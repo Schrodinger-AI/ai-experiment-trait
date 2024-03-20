@@ -6,6 +6,7 @@
  * 
  */
 // ROUTER IMPORT
+import React from 'react';
 import * as PATH from '../../../routes/constants';
    
 export const mainMenuItems = [

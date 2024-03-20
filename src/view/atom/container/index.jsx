@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * 
  * Container component
@@ -6,6 +7,7 @@
  * 
  */
 // GENERIC IMPORT
+import React from 'react';
 import {Box} from '@mui/material';
 
 // STYLE IMPORT

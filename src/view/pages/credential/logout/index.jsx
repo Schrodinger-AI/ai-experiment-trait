@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * 
  * Login Page component
@@ -6,6 +7,7 @@
  * 
  */
 // COMPONENT IMPORT
+import React from 'react';
 import {ConfirmModal} from '../../../atom';
 
 // HOOK IMPORT

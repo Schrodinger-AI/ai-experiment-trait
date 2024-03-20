@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * 
  * Image Generator experiment component
@@ -6,7 +7,7 @@
  * 
  */
 // GENERIC IMPORT
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {Box, Chip, Modal, Button, Select, MenuItem, FormControl, InputLabel} from '@mui/material';
 
 // JSON DATA

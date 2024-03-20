@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * 
  * Experiment List component
@@ -6,7 +7,7 @@
  * 
  */
 // GENERIC IMPORT
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 // COMMON COMPONENT
@@ -50,7 +51,6 @@ const ExperimentListPage = () => {
 
   useEffect(() => {
     getExperimentList();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

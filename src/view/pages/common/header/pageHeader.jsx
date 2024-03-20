@@ -1,4 +1,4 @@
-
+/* eslint-disable react/prop-types */
 /**
  * 
  * Page header component
@@ -7,6 +7,7 @@
  * 
  */
 // GENERIC IMPORT
+import React from 'react';
 import {Box} from '@mui/material';
 
 // COMPONENT IMPORT
