@@ -8,6 +8,8 @@ const useStyles = makeStyles((theme) => ({
         top: 0,
         left: 0,
         bottom: 0,
+        background: '#256dd3',
+        height: '100vh',
         [theme.breakpoints.down('sm')]: {
           zIndex: 2,
         }

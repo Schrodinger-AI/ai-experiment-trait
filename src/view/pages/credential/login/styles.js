@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
             marginLeft: 'auto',
             marginRight: 'auto',
             textAlign: 'center',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            marginTop: '-30%',
         }
     },
     loginBox: {

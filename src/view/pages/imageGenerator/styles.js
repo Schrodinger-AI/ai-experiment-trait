@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
         overflow: 'scroll',
         margin: '32px 0',
         [theme.breakpoints.down('sm')]: {
-            height: 300,
+            height: 'auto',
         }
     }
 }));
