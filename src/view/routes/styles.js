@@ -1,6 +1,6 @@
 import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   app: {
     background: '#f6f6fa',
     minHeight: '100vh',
@@ -16,10 +16,17 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
+    [theme.breakpoints.down('sm')]: {
+      marginTop: '45px',
+      zIndex: 1
+    }
   },
   routerContainer: {
     padding: '25px',
-    flex: 1
+    flex: 1,
+    [theme.breakpoints.down('sm')]: {
+      padding: '15px 10px',
+    }
   }
 }));
   

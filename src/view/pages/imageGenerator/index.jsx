@@ -201,9 +201,9 @@ const ImageGeneratorPage = () => {
       {isOpenModal && <TraitsModal selectedTraits={selectedTraits} setSelectedTraits={setSelectedTraits} onClose={closeModal}/>}
 
       <Box className={classes.btnContainer} textAlign='right' mt={4}>
-          <Button variant="outlined" onClick={openModal}>Select Traits</Button>
-          <Button variant="outlined" onClick={resetForm}>Clear</Button>
-          <Button variant="contained" onClick={submitForm}>Submit Experiment</Button>
+          <Button variant="outlined" className={classes.btn} onClick={openModal}>Select Traits</Button>
+          <Button variant="outlined" className={classes.btn} onClick={resetForm}>Clear</Button>
+          <Button variant="contained" className={classes.btn} onClick={submitForm}>Submit</Button>
       </Box>
     </Container>
   );

@@ -28,10 +28,11 @@ import useStyles from './styles';
 const Menu = () => {
     // DECLARE STYLE
     const classes = useStyles();
-
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     // LOCAL STATE
     const [isLoading, setLoading] = useState(false);
     const [isOpen, setOpen] = useState(false);
+    const [showMenu, setShowMenu] = useState(isMobile ? false : true);
 
     // NAVBAR
     const navigate = useNavigate();
@@ -50,42 +51,63 @@ const Menu = () => {
             context?.dispatch({ type: MENU_ACTION_TYPE.UPDATE, payload: link });
             setTimeout(() => setLoading(false), 500);
             localStorage.setItem("selectedMenu", link);
+            // ONLY ON MOBILE
+            closeMenu();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth', // Optionally, you can use smooth scrolling
+            });
         }
     };
 
+    // ONLY MOBILE
+    const toggleMenu = () => {
+        setShowMenu((prevValue) => !prevValue);
+    }
+
+    // ONLY MOBILE
+    const closeMenu = () => {
+        if (isMobile) {
+            setShowMenu(false);
+        }
+    }
+
     return (
-        <Box className={classes.sideMenu}>
-            {isLoading && <Loader/>}
-            <Box className={classes.sideMenuTopLayer}>
-                <Logo/>
-                <Box className={classes.menu}>
-                    <ul className={classes.menuList}>
-                        {mainMenuItems.map((item) => (
-                            <li key={item.id} onClick={() => onMenuPress(item.link)} className={clsx(classes.menuItem, item.link === selectedMenu && classes.menuActive)}>{item.icon}&nbsp;&nbsp;{item.label}</li>
-                        ))}
-                    </ul>
-                    <Box className={classes.menuHeader}>Utils</Box>
+        <Box className={classes.sideMenuContainer}>
+            <Logo {...{toggleMenu, showMenu}}/>
+            {showMenu && <Box className={classes.sideMenu}>
+                {isLoading && <Loader/>}
+                <Box className={classes.sideMenuTopLayer}>
+                    
+                    <Box className={classes.menu}>
+                        <ul className={classes.menuList}>
+                            {mainMenuItems.map((item) => (
+                                <li key={item.id} onClick={() => onMenuPress(item.link)} className={clsx(classes.menuItem, item.link === selectedMenu && classes.menuActive)}>{item.icon}&nbsp;&nbsp;{item.label}</li>
+                            ))}
+                        </ul>
+                        <Box className={classes.menuHeader}>Utils</Box>
+                        <ul className={clsx(classes.menuList)}>
+                            {utilsMenuItems.map((item) => (
+                                <li key={item.id} onClick={() => onMenuPress(item.link)} className={clsx(classes.menuItem,  item.link === selectedMenu && classes.menuActive)}>{item.icon}&nbsp;&nbsp;{item.label}</li>
+                            ))}
+                        </ul>
+                        <Box className={classes.menuHeader}>Setting</Box>
+                        <ul className={clsx(classes.menuList)}>
+                            {settingsMenuItems.map((item) => (
+                                <li key={item.id} onClick={() => onMenuPress(item.link)} className={clsx(classes.menuItem,  item.link === selectedMenu && classes.menuActive)}>{item.icon}&nbsp;&nbsp;{item.label}</li>
+                            ))}
+                        </ul>
+                    </Box>
+                </Box>
+                <Box className={classes.sideMenuBottomLayer}>
                     <ul className={clsx(classes.menuList)}>
-                        {utilsMenuItems.map((item) => (
-                            <li key={item.id} onClick={() => onMenuPress(item.link)} className={clsx(classes.menuItem,  item.link === selectedMenu && classes.menuActive)}>{item.icon}&nbsp;&nbsp;{item.label}</li>
-                        ))}
-                    </ul>
-                    <Box className={classes.menuHeader}>Setting</Box>
-                    <ul className={clsx(classes.menuList)}>
-                        {settingsMenuItems.map((item) => (
-                            <li key={item.id} onClick={() => onMenuPress(item.link)} className={clsx(classes.menuItem,  item.link === selectedMenu && classes.menuActive)}>{item.icon}&nbsp;&nbsp;{item.label}</li>
+                        {helpMenuItems.map((item) => (
+                            <li key={item.id} onClick={() => onMenuPress(item.link)} className={clsx(classes.menuItem,  item.link === context?.state.value && classes.menuActive)}>{item.icon}&nbsp;&nbsp;{item.label}</li>
                         ))}
                     </ul>
                 </Box>
-            </Box>
-            <Box className={classes.sideMenuBottomLayer}>
-                <ul className={clsx(classes.menuList)}>
-                    {helpMenuItems.map((item) => (
-                        <li key={item.id} onClick={() => onMenuPress(item.link)} className={clsx(classes.menuItem,  item.link === context?.state.value && classes.menuActive)}>{item.icon}&nbsp;&nbsp;{item.label}</li>
-                    ))}
-                </ul>
-            </Box>
-            {isOpen && <Logout onClose={() => setOpen(false)}/>}
+                {isOpen && <Logout onClose={() => setOpen(false)}/>}
+            </Box>}
         </Box>
     )
 }

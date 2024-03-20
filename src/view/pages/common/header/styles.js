@@ -1,6 +1,6 @@
 import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   header: {
     display: 'flex',
     justifyContent: 'start',
@@ -17,6 +17,10 @@ const useStyles = makeStyles(() => ({
     paddingBottom: '16px',
     marginBottom: '24px',
     boxShadow: '0 1px 0 #ffffff',
+    [theme.breakpoints.down('sm')]: {
+        textAlign: 'center',
+        marginBottom: '36px',
+    }
 
   },
   pageHeaderTitle: {

@@ -246,8 +246,8 @@ const StaticFileImageGeneratorPage = () => {
         </Box>
       </Box>
       <Box className={classes.btnContainer} textAlign='right' mt={4}>
-          <Button variant="outlined" onClick={resetForm}>Clear</Button>
-          <Button variant="contained" onClick={submitForm}>Submit Experiment</Button>
+          <Button variant="outlined" className={classes.btn} onClick={resetForm}>Clear</Button>
+          <Button variant="contained" className={classes.btn} onClick={submitForm}>Submit Experiment</Button>
       </Box>
     </Container>
   );

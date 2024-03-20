@@ -8,7 +8,10 @@
  */
 // GENERIC IMPORT
 import React, { useState } from 'react';
-import {Box, Chip, Modal, Button, Select, MenuItem, FormControl, InputLabel} from '@mui/material';
+import {Box, Chip, Select, MenuItem, FormControl, InputLabel} from '@mui/material';
+
+// COMMON COMPONENT
+import {FormModal} from '../../../atom';
 
 // JSON DATA
 import TraitsDataList from '../../../../mockData/traits.json';
@@ -63,12 +66,15 @@ const TraitsModal = (props) => {
   };
 
   return (
-    <Modal open>
-      <Box className={classes.modal}>
-        <Box className={classes.modalHeader}>
-          <Box className={classes.modalTitle}>Select traits</Box>
-        </Box>
-        <Box className={classes.modalContent}>
+
+    <FormModal
+      title='Select traits'
+      onClose={props.onClose}
+      size='large'
+      noLabel='Continue'
+      hidePrimaryBtn
+    >
+        <Box>
           {props.selectedTraits.map((item) => <Chip color="primary" onDelete={() => removeTraits(item.value, item.traitType)} label={`${item.traitType}: ${item.value}`} className={classes.chipItem} key={`${item.value}-selected-traits`} />)}
           <Box mt={2}/>
           <FormControl fullWidth>
@@ -92,11 +98,7 @@ const TraitsModal = (props) => {
             ))}
             </Box>
         </Box>
-        <Box className={classes.modalFooter}>
-          <Button variant="outlined" onClick={props.onClose}>Close</Button>
-        </Box>
-      </Box>
-    </Modal>
+    </FormModal>
   );
 };
 

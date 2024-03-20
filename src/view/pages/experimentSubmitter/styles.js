@@ -1,15 +1,23 @@
 import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     formRow: {
         display: 'flex',
         flex: 1,
         flexDirection: 'row',
         gap: '12px',
-        marginBottom: '24px'
+        marginBottom: '24px',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+            marginBottom: 0,
+            gap: 0,
+        }
     },
     formTextfield: {
         marginBottom: 0,
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '16px !important',
+        }
     },
     link: {
         cursor: 'pointer',
@@ -24,7 +32,21 @@ const useStyles = makeStyles(() => ({
     btnContainer: {
         display: 'flex',
         justifyContent: 'flex-end',
-        gap: '12px'
+        gap: '12px',
+        [theme.breakpoints.down('sm')]: {
+            flex: 1,
+            flexDirection: 'column'
+        }
+    },
+    btn: {
+        [theme.breakpoints.down('sm')]: {
+            flex: 1,
+        }
+    },
+    onlyDesktop: {
+        [theme.breakpoints.down('sm')]: {
+            display: 'none',
+        }
     },
     chipItem: {
         margin: '4px !important'

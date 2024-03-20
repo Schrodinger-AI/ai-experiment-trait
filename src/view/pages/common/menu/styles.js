@@ -1,17 +1,34 @@
 import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
+    sideMenuContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'sticky',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        [theme.breakpoints.down('sm')]: {
+          zIndex: 2,
+        }
+    },
     sideMenu: {
       width: '240px',
       background: '#256dd3',
       boxSizing: 'border-box',
-      display: 'flex',
-      flexDirection: 'column',
-      position: 'sticky',
-      top: 0,
-      left: 0,
-      bottom: 0,
       height: '100vh',
+      [theme.breakpoints.down('sm')]: {
+        zIndex: 2,
+        position: 'fixed',
+        top: '46px',
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: '100%',
+        boxSizing: 'border-box',
+        display: 'flex',
+        flexDirection: 'column'
+      }
     },
     sideMenuTopLayer: {
         flex: 1,
@@ -22,6 +39,9 @@ const useStyles = makeStyles(() => ({
         boxSizing: 'border-box',
         borderTop: '1px solid #2a73dc',
         boxShadow: '0 -1px 0 #2062c1',
+        [theme.breakpoints.down('sm')]: {
+            height: '120px'
+          }
     },
     menu: {
         width: '100%',

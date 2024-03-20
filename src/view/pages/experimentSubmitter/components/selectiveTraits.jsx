@@ -45,7 +45,7 @@ const SelectiveTraits = (props) => {
     }
 
     return (
-        <Box>
+        <Box className={classes.onlyDesktop}>
             <Box className={classes.groupCheckbox}>
                 <FormControlLabel control={<Checkbox disabled={!props?.traitsList} onChange={handleCheckbox} checked={isCheckTicked}/>} label="Selective traits (Optional)" />
                 {isCheckTicked && <Box>Total selected traits: {props.selectedTraits.length}</Box>}

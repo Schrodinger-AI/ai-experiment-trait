@@ -20,7 +20,7 @@ const ConfirmModal = (props) => {
   const classes = useStyles();
 
   // LOCAL VARIABLE
-  const {onConfirm, yesLabel = 'Confirm', noLabel = 'Close', title, onClose, isYesButtonDisabled = false, size = 'medium'} = props;
+  const {onConfirm, yesLabel = 'Confirm', noLabel = 'Close', title, onClose, isYesButtonDisabled = false, size = 'medium', hidePrimaryBtn = false} = props;
 
   const sizeContentSwitch = {
     small: classes.modalSmallContent,
@@ -43,8 +43,8 @@ const ConfirmModal = (props) => {
           {props.children}
         </Box>
         <Box className={classes.modalFooter}>
-          <Button variant="outlined" onClick={onClose} >{noLabel}</Button>
-          <Button variant="contained" onClick={onConfirm} disabled={isYesButtonDisabled}>{yesLabel}</Button>
+          <Button variant="outlined" className={classes.btn} onClick={onClose} >{noLabel}</Button>
+          {!hidePrimaryBtn && <Button variant="contained" className={classes.btn} onClick={onConfirm} disabled={isYesButtonDisabled}>{yesLabel}</Button>}
         </Box>
       </Box>
     </Modal>

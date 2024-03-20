@@ -1,6 +1,6 @@
 import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     container: {
         background: '#256dd3',
         height: '100vh',
@@ -13,7 +13,14 @@ const useStyles = makeStyles(() => ({
         display: 'flex',
         width: 700,
         gap: '40px',
-        marginTop: '-100px'
+        marginTop: '-100px',
+        [theme.breakpoints.down('sm')]: {
+            width: '300px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            textAlign: 'center',
+            flexDirection: 'column'
+        }
     },
     loginBox: {
         width: 400,
@@ -24,6 +31,14 @@ const useStyles = makeStyles(() => ({
         display: 'flex',
         flexDirection: 'column',
         gap: '16px',
+        [theme.breakpoints.down('sm')]: {
+            width: 'auto',
+        }
+    },
+    onlyDesktop: {
+        [theme.breakpoints.down('sm')]: {
+            display: 'none',
+        }
     },
     loginTitle: {
         fontSize: '18px',
@@ -40,6 +55,9 @@ const useStyles = makeStyles(() => ({
         display: 'inline-flex',
         flexDirection: 'column',
         justifyContent: 'center',
+        [theme.breakpoints.down('sm')]: {
+            display: 'block',
+        }
     },
     title: {
         fontSize: '40px',

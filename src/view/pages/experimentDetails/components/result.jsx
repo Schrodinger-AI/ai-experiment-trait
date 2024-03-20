@@ -44,7 +44,7 @@ const Result = (props) => {
     return (
         <Box>
             <table  className={classes.dataTable}>
-            <tr className={classes.dataList} >
+            <tr className={clsx(classes.dataList, classes.onlyDesktop)} >
                 <td width={300} className={classes.dataListItem} >Sample image</td>
                 <td className={classes.dataListItem} >Prompt</td>
                 <td className={classes.dataListItem} >Revised prompt</td>
@@ -62,15 +62,25 @@ const Result = (props) => {
                         }
                         }/>
                         <Box className={classes.title} textAlign={'center'} marginTop={0.5}><strong>Created date: </strong>{Date(item.create_date)}</Box>
+                        <Box className={classes.onlyMobile}>
+                            <Box className={classes.title} marginTop={0.5}><strong>Prompt:&nbsp;</strong>{item.prompt}&nbsp;<i className={clsx("fa fa-clone", classes.copyIcon)} onClick={() => navigator.clipboard.writeText(item.prompt)}></i></Box>
+                            <Box className={classes.title} marginTop={1}><strong>Revised prompt:&nbsp;</strong>{item.revised_prompt}&nbsp;<i className={clsx("fa fa-clone", classes.copyIcon)} onClick={() => navigator.clipboard.writeText(item.revised_prompt)}></i></Box>
+                            {item.traits && 
+                            <Box>
+                                <Box className={classes.title} marginTop={1}><strong>Traits: </strong>{JSON.stringify(item.traits)}&nbsp;</Box>
+                                <Box display={'block'} mt={1}><Chip label={<><strong>Total traits:</strong> {item.traits.length}</>} size="small" variant="outlined" /></Box>
+                            </Box>
+                            }
+                        </Box>
                     </Box>
                 </td>
-                <td className={classes.dataListItem}>
+                <td className={clsx(classes.dataListItem, classes.onlyDesktop)}>
                     <Box className={classes.title} marginTop={0.5}>{item.prompt}&nbsp;<i className={clsx("fa fa-clone", classes.copyIcon)} onClick={() => navigator.clipboard.writeText(item.prompt)}></i></Box>
                 </td>
-                <td className={classes.dataListItem}>
+                <td className={clsx(classes.dataListItem, classes.onlyDesktop)}>
                     <Box className={classes.title} marginTop={1}>{item.revised_prompt}&nbsp;<i className={clsx("fa fa-clone", classes.copyIcon)} onClick={() => navigator.clipboard.writeText(item.revised_prompt)}></i></Box>
                 </td>
-                <td className={classes.dataListItem}>
+                <td className={clsx(classes.dataListItem, classes.onlyDesktop)}>
                     {item.traits && 
                         <Box>
                             <Box className={classes.title} marginTop={1}><strong>Traits: </strong>{JSON.stringify(item.traits)}&nbsp;</Box>

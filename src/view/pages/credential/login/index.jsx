@@ -98,7 +98,7 @@ const LoginPage = () => {
   return (
     <>
       { isLoading && <Loader/>} 
-      <Header/>
+      <Box className={classes.onlyDesktop}><Header/></Box>
       <Box className={classes.container}>
         <Box className={classes.loginContainer}>
           <Box className={classes.loginContent}>

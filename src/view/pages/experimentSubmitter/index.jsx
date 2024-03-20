@@ -6,6 +6,7 @@
  * 
  */
 // GENERIC IMPORT
+import clsx from 'clsx';
 import React, { useState, useRef } from 'react';
 import {Box, TextField, Button, Tooltip} from '@mui/material';
 
@@ -97,7 +98,7 @@ const ExperimentSubmitterPage = () => {
             inputProps={{
               ref: traitFileRef
             }}
-            helperText={<>Upload Trait definitioins file in json format. <Tooltip title="You can download and use it but its not latest file."><a href='/sampleFile/trait-definitioins.json' className={classes.link} download>Download</a></Tooltip> sample file. <Tooltip title="You can add / remove the traits item."><Box className={classes.link}  onClick={() => setOpenTraitsFileModal(true)}>Advance setting</Box></Tooltip>.</>}/>
+            helperText={<>Upload Trait definitioins file in json format. <Tooltip title="You can download and use it but its not latest file."><a href='/sampleFile/trait-definitioins.json' className={classes.link} download>Download</a></Tooltip> sample file. <Tooltip title="You can add / remove the traits item."><Box className={clsx(classes.link, classes.onlyDesktop)}  onClick={() => setOpenTraitsFileModal(true)}>Advance setting</Box></Tooltip>.</>}/>
         </Box>
         <Box flex={1}>
           <TextField 
@@ -127,7 +128,7 @@ const ExperimentSubmitterPage = () => {
             inputProps={{
               ref: configFileRef
             }}
-            helperText={<>Upload config file in json format. <Tooltip title="You can download and use it but its not latest file."><a href='/sampleFile/config.json' className={classes.link} download>Download</a></Tooltip> sample file. <Tooltip title="You can change the prefix message."><Box className={classes.link}  onClick={() => setOpenConfigFileModal(true)}>Advance setting</Box></Tooltip>.</>}/>
+            helperText={<>Upload config file in json format. <Tooltip title="You can download and use it but its not latest file."><a href='/sampleFile/config.json' className={classes.link} download>Download</a></Tooltip> sample file. <Tooltip title="You can change the prefix message."><Box className={clsx(classes.link, classes.onlyDesktop)}  onClick={() => setOpenConfigFileModal(true)}>Advance setting</Box></Tooltip>.</>}/>
         </Box>
         <Box flex={1}>
           <TextField  label="Number of samples" variant="outlined" required 
@@ -159,8 +160,8 @@ const ExperimentSubmitterPage = () => {
       {isOpenConfigFileModal && <ConfigFileSetting configFileObject={state.configFile} {...{state, setState}} onClose={() => setOpenConfigFileModal(false)}/>}
       {isOpenTraitsFileModal && <TraitsFileSetting traitsFileObject={defaultFile.traitsFile} {...{state, setState}} onClose={() => setOpenTraitsFileModal(false)}/>}
       <Box className={classes.btnContainer} textAlign='right' mt={2}>
-          <Button variant="outlined" onClick={resetForm}>Clear</Button>
-          <Button variant="contained" onClick={submitForm}>Submit Experiment</Button>
+          <Button variant="outlined" className={classes.btn} onClick={resetForm}>Clear</Button>
+          <Button variant="contained"  className={classes.btn} onClick={submitForm}>Submit Experiment</Button>
       </Box>
     </Container>
   );

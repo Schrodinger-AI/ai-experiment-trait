@@ -7,9 +7,11 @@
  */
 // GENERIC IMPORT
 import React, {useReducer, useState} from 'react';
+import { ThemeProvider } from '@mui/material/styles';
 
 // COMMON COMPONENT
 import {Notification} from './view/molecules';
+import theme from './theme'; 
 
 // ROUTER IMPORT
 import EntryRoutes from './view/routes/entryRoutes';
@@ -36,12 +38,14 @@ function App() {
   const value = { notification, setNotification };
   
   return (
-    <NotificationContext.Provider value={value}>        
-      <MenuContext.Provider value={{ state, dispatch }}>
-        <EntryRoutes/>
-        <Notification {...value.notification} setNotification={setNotification}/>
-      </MenuContext.Provider>
-    </NotificationContext.Provider>
+    <ThemeProvider theme={theme}>
+      <NotificationContext.Provider value={value}>        
+        <MenuContext.Provider value={{ state, dispatch }}>
+          <EntryRoutes/>
+          <Notification {...value.notification} setNotification={setNotification}/>
+        </MenuContext.Provider>
+      </NotificationContext.Provider>
+    </ThemeProvider>
   );
 }
 

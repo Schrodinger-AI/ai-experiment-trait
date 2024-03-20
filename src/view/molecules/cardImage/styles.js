@@ -1,6 +1,6 @@
 import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     cardImageContainer: {
         textAlign: 'center'
     },
@@ -19,6 +19,9 @@ const useStyles = makeStyles(() => ({
             transition: 'all 0.1s linear',
             cursor: 'pointer',
         },
+        [theme.breakpoints.down('sm')]: {
+            width: 'auto !important',
+        }
     }
   }));
   
