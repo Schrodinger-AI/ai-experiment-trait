@@ -8,7 +8,7 @@
 // GENERIC IMPORT
 import React, {useState} from 'react';
 import {Box, TextField, Button} from '@mui/material';
-import {useNavigate, useParams} from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
 
 // COMPONENT IMPORT
@@ -38,7 +38,9 @@ const LoginPage = () => {
   const classes = useStyles();
 
   // PARAMS
-  const { password } = useParams();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const password = queryParams.get('password');
 
   // DECLARE NOTIFICATION AND NAVIDATE
   const setNotification = useNotification();
